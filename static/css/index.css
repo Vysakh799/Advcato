@@ -37,9 +37,10 @@ ul li:hover{
 }
 .login-main{
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+     flex-direction: column;
+    /* align-items: center;  */
+    /* justify-content: center; */
+    /* background-color: red; */
 }
 .login-inp .inp-login:focus{
     box-shadow: none;
