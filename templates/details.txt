@@ -1,0 +1,34 @@
+Personal Information
+Full Name: First name, middle name (if applicable), and last name.
+Date of Birth: To verify age and eligibility.
+Gender: Optional, but can be useful for record-keeping.
+Profile Picture: For identification purposes.
+
+Contact Information
+Email Address: For communication and verification.
+Phone Number: For direct contact.
+Address: Office address or residential address for official correspondence.
+
+Professional Information
+Bar Council Registration Number: To verify legitimacy and practice rights.
+Practice Areas: Specialization areas (e.g., family law, criminal law, corporate law).
+Years of Experience: To gauge expertise.
+Law Firm: Name of the law firm (if applicable).
+Education: Degrees obtained and the institutions attended.
+Professional Licenses and Certifications: Additional qualifications.
+Languages Spoken: To facilitate communication with diverse clients.
+
+Security Information
+Password: For account protection.
+Security Questions: For account recovery.
+
+Additional Information
+Bio/Description: A brief summary of the lawyer's professional background and achievements.
+Work Hours: Availability for consultations.
+Consultation Fee: Standard fee for consultations (if applicable).
+
+Documents Upload
+ID Proof: Government-issued ID for verification.
+Bar Council Certificate: Proof of registration with the Bar Council.
+Degree Certificates: Educational qualification proof.
+Experience Certificates: Proof of past work experience.
