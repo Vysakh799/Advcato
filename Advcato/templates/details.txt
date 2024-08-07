@@ -32,3 +32,9 @@ ID Proof: Government-issued ID for verification.
 Bar Council Certificate: Proof of registration with the Bar Council.
 Degree Certificates: Educational qualification proof.
 Experience Certificates: Proof of past work experience.
+
+name
+Phone
+Email
+address
+Password
