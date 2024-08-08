@@ -6,4 +6,14 @@ urlpatterns = [
 
     #Login Page
     path('login',views.login),
+
+    #about Page
+    path('about',views.about),
+
+    #contact Page
+    path('contact',views.contact),
+
+    #User_reg
+    path('Ureg',views.Ureg),
+    
 ]
