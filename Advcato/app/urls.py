@@ -15,5 +15,7 @@ urlpatterns = [
 
     #User_reg
     path('Ureg',views.Ureg),
-    
+
+    #User_log
+    path('Ulog',views.Ulog),
 ]
