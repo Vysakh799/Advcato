@@ -4,8 +4,20 @@ import bcrypt
 from django.contrib import messages
 # Create your views here.
 
+def getuser(request):
+    user=False
+
+    if 'user' in request.session:
+            user=True
+    return user
+
+
+
 def index(request):
-    return render(request,'index.html')
+    if getuser(request):
+        user=request.session['user']
+        print(user)
+    return render(request,'index.html',{'user':getuser(request)})
 def login(request):
     return render(request,'login.html')
 def about(request):
@@ -39,15 +51,15 @@ def Ulog(request):
         epho=request.POST['epho']
         password=request.POST['password']   
         psw=password.encode('utf-8')
-        print(psw,password,epho)
+        # print(psw,password,epho)
         try:
             data=User.objects.get(uphone=epho)
             ps2=data.upassword.encode('utf-8')
-            print(data,ps2)
+            # print(data,ps2)
             if bcrypt.checkpw(psw,data.upassword.encode('utf-8')):
                 request.session['user']=data.uname
                 # messages.success(request, "Login successfully completed!") 
-                return redirect(index)
+                return redirect(User_index)
             else:
                 messages.add_message(request,messages.INFO, "Incorrect Password" ,extra_tags="danger")
                 return redirect(login)  
@@ -59,12 +71,26 @@ def Ulog(request):
                 if bcrypt.checkpw(psw,data.upassword.encode('utf-8')):
                     request.session['user']=data.uname
                     # messages.success(request, "Login successfully completed!") 
-                    return redirect(index)
+                    return redirect(User_index)
                 else:
                     messages.add_message(request,messages.INFO, "Incorrect Password" ,extra_tags="danger")
                     return redirect(login)
             except:
                 messages.add_message(request,messages.INFO, "Incorrect Email or Phonenumber!!" ,extra_tags="danger")
                 return redirect(login)
-            
-            
+
+def User_logout(request):
+    if getuser(request):
+        del request.session['user']
+        return redirect(index)
+    else:
+        return redirect(login)
+
+
+def User_index(request):
+    if getuser(request):
+        user1=request.session['user']
+        # print(user1)
+        return render(request,'user/user_index.html',{"user":user1})
+    else:
+        return redirect(login)

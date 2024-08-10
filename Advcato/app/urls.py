@@ -18,4 +18,8 @@ urlpatterns = [
 
     #User_log
     path('Ulog',views.Ulog),
+
+    #User
+    path('User_index',views.User_index),
+    path('User_logout',views.User_logout),
 ]
