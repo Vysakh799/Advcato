@@ -54,7 +54,7 @@ def Ulog(request):
         # print(psw,password,epho)
         try:
             data=User.objects.get(uphone=epho)
-            ps2=data.upassword.encode('utf-8')
+            # ps2=data.upassword.encode('utf-8')
             # print(data,ps2)
             if bcrypt.checkpw(psw,data.upassword.encode('utf-8')):
                 request.session['user']=data.uname
@@ -94,3 +94,28 @@ def User_index(request):
         return render(request,'user/user_index.html',{"user":user1})
     else:
         return redirect(login)
+
+
+
+
+
+
+def Adv_reg(request):
+    if request.method=='POST':
+        aname=request.POST['name']
+        aphone=request.POST['phno']
+        aemail=request.POST['email']
+        aaddress=request.POST['address'] 
+        apassword=request.POST['password']
+        cnf_password=request.POST['cnf_password']
+        if apassword==cnf_password:
+            psw=apassword.encode('utf-8')
+            salt=bcrypt.gensalt()               #Password Hashing
+            psw_hashed=bcrypt.hashpw(psw,salt)
+            data=Advocate.objects.create(aname=aname,aphone=aphone,aemail=aemail,aaddress=aaddress,apassword=psw_hashed.decode('utf-8'))
+            data.save()
+            messages.success(request, "Account created successfully pls login to continue !")
+            return redirect(login)
+        else:
+            messages.add_message(request,messages.INFO, "Password Doesn't match Pls Register again!!" ,extra_tags="danger")
+    return redirect(login)

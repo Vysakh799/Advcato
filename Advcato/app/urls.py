@@ -22,4 +22,8 @@ urlpatterns = [
     #User
     path('User_index',views.User_index),
     path('User_logout',views.User_logout),
+
+
+    #Advocate_reg
+    path('Adv_reg',views.Adv_reg),
 ]
