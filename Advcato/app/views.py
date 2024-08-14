@@ -10,14 +10,14 @@ def getuser(request):
     if 'user' in request.session:
             user=True
     return user
-
-
+def getadv(request):
+    adv=False
+    if 'adv' in request.session:
+        adv=True
+    return adv
 
 def index(request):
-    if getuser(request):
-        user=request.session['user']
-        print(user)
-    return render(request,'index.html',{'user':getuser(request)})
+    return render(request,'index.html',{'user':getuser(request),'adv':getadv(request)}) 
 def login(request):
     return render(request,'login.html')
 def about(request):
@@ -78,6 +78,8 @@ def Ulog(request):
             except:
                 messages.add_message(request,messages.INFO, "Incorrect Email or Phonenumber!!" ,extra_tags="danger")
                 return redirect(login)
+    else:
+        return redirect(login)
 
 def User_logout(request):
     if getuser(request):
@@ -119,3 +121,49 @@ def Adv_reg(request):
         else:
             messages.add_message(request,messages.INFO, "Password Doesn't match Pls Register again!!" ,extra_tags="danger")
     return redirect(login)
+
+def Adv_log(request):
+    if request.method=='POST':
+        epho=request.POST['epho']
+        password=request.POST['password']   
+        psw=password.encode('utf-8')
+        # print(psw,password,epho)
+        try:
+            data=Advocate.objects.get(aphone=epho)
+            # ps2=data.upassword.encode('utf-8')
+            # print(data,ps2)
+            if bcrypt.checkpw(psw,data.apassword.encode('utf-8')):
+                request.session['adv']=data.aname
+                print("logged in")
+                # messages.success(request, "Login successfully completed!") 
+                return redirect(Adv_index)
+            else:
+                messages.add_message(request,messages.INFO, "Incorrect Password" ,extra_tags="danger")
+                return redirect(login)  
+
+        except:
+            try:
+                data=Advocate.objects.get(aemail=epho)
+                # print(data)
+                if bcrypt.checkpw(psw,data.upassword.encode('utf-8')):
+                    request.session['adv']=data.aname
+                    print("logged in")
+                    # messages.success(request, "Login successfully completed!") 
+                    return redirect(Adv_index)
+                else:
+                    messages.add_message(request,messages.INFO, "Incorrect Password" ,extra_tags="danger")
+                    return redirect(login)
+            except:
+                messages.add_message(request,messages.INFO, "Incorrect Email or Phonenumber!!" ,extra_tags="danger")
+                return redirect(login)
+    else:
+        return redirect(login)
+
+
+def Adv_index(request):
+    if 'adv' in request.session:
+        adv=request.session['adv']
+        print(adv)
+        return render(request,'adv/adv_index.html',{'adv':adv})
+    else:
+        return redirect(login)

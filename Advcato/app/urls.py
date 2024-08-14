@@ -26,4 +26,10 @@ urlpatterns = [
 
     #Advocate_reg
     path('Adv_reg',views.Adv_reg),
+
+    #Advocate_log
+    path('Adv_log',views.Adv_log),
+
+    #Advocate
+    path('Adv_index',views.Adv_index),
 ]
