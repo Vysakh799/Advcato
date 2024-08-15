@@ -32,4 +32,5 @@ urlpatterns = [
 
     #Advocate
     path('Adv_index',views.Adv_index),
+    path('Adv_reg_form',views.Adv_reg_form),
 ]

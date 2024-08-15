@@ -23,6 +23,7 @@ class Advocate(models.Model):
     aheighest_qual=models.TextField(null=True)
     start_time=models.TimeField(null=True)
     end_time=models.TimeField(null=True)
+    off_day=models.TextField(null=True)
     idproof=models.FileField(null=True)
     bc_certificate=models.FileField(null=True)
     exp_certificate=models.FileField(null=True)

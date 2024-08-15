@@ -127,16 +127,17 @@ def Adv_log(request):
         epho=request.POST['epho']
         password=request.POST['password']   
         psw=password.encode('utf-8')
-        # print(psw,password,epho)
+        print(psw,password,epho)
         try:
             data=Advocate.objects.get(aphone=epho)
+            print(data)
             # ps2=data.upassword.encode('utf-8')
             # print(data,ps2)
             if bcrypt.checkpw(psw,data.apassword.encode('utf-8')):
                 request.session['adv']=data.aname
                 print("logged in")
                 # messages.success(request, "Login successfully completed!") 
-                return redirect(Adv_index)
+                return redirect(Adv_reg_form)
             else:
                 messages.add_message(request,messages.INFO, "Incorrect Password" ,extra_tags="danger")
                 return redirect(login)  
@@ -144,12 +145,12 @@ def Adv_log(request):
         except:
             try:
                 data=Advocate.objects.get(aemail=epho)
-                # print(data)
+                print(data)
                 if bcrypt.checkpw(psw,data.upassword.encode('utf-8')):
                     request.session['adv']=data.aname
                     print("logged in")
                     # messages.success(request, "Login successfully completed!") 
-                    return redirect(Adv_index)
+                    return redirect(Adv_reg_form)
                 else:
                     messages.add_message(request,messages.INFO, "Incorrect Password" ,extra_tags="danger")
                     return redirect(login)
@@ -167,3 +168,6 @@ def Adv_index(request):
         return render(request,'adv/adv_index.html',{'adv':adv})
     else:
         return redirect(login)
+    
+def Adv_reg_form(request):
+    return render(request,'adv/adv_reg_form.html')

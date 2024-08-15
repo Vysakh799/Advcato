@@ -11,6 +11,9 @@ body{
 /* .nav-item a{
     font-weight: 20px;
 } */
+.navbar{
+    font-size: 18px;
+}
 .starting-page{
     height: 88.3vh;
     background-color: rgb(0, 0, 0);
@@ -81,3 +84,37 @@ ul li:hover{
 .login-main #adv_reg{
     display: none;
 }
+
+.phead{
+    display: flex;
+    /* background-color: red; */
+    /* justify-content: center ; */
+    align-items: center;
+    color: white;
+    font-weight: 600;
+}
+.phead i{
+    margin-top: -10px;
+    margin-right: 10px;
+}
+.para{
+    color: white;
+    background-color: rgba(70, 68, 68, 0.425);
+    padding:10px;
+    border-radius: 14px;
+    margin-bottom: 10px;
+}
+.para:hover{
+    border: 1px solid rgb(164, 164, 164);
+    transition: all ease 2s;
+}
+.firstline label{
+    color: white;
+    font-weight: 600;
+}
+.firstline input{
+    margin-left:15px ;
+}
+/* .firstline{
+    background-color: red;
+} */
