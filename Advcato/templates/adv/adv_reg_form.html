@@ -43,7 +43,7 @@
               </div> -->
             </div>
           </nav>
-          <div class="starting-page row" style="margin: 0; background-image: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.7)), url('{% static 'images/lawyer.png' %}'); background-repeat: no-repeat; background-size: cover;">
+          <div class="starting-page row" style="margin: 0;">
             <!-- <div class="main-heading col-lg-12 d-flex justify-content-center h-25">
                 <p style="font-size: 50px; font-weight: 700;" class="text-light"><span style="font-size: 65px;">W</span>elcome, {{adv}}</p>
             </div>
@@ -84,11 +84,11 @@
                 <div class="firstline row">
                     <div class="col-lg-6">
                         <label for="bcr_no">Bar Counclil Registration No.</label><br>
-                        <input type="text" name="bcr_no" id="bcr_no">
+                        <input type="text" name="bcr_no" id="bcr_no" class="regt_t">
                     </div>
                     <div class="col-lg-6">
                         <label for="aheighest_qual">Heighest Qualification</label><br>
-                        <input type="text" name="aheighest_qual" id="aheighest_qual" >
+                        <input type="text" name="aheighest_qual" id="aheighest_qual" class="regt_t" >
                     </div>
                     <!-- <span style="color: white; margin-top: 15px; font-size: 18px;">Working Hours</span> -->
                     <div class="col-lg-4">
@@ -100,8 +100,8 @@
                         <input type="time" name="endtime" id="endtime" >
                     </div>
                     <div class="col-lg-4">
-                        <label for="offday">Consultation Ends at </label><br>
-                        <input type="text" name="offday" id="offday" >
+                        <label for="offday">Offday</label><br>
+                        <input type="text" name="offday" id="offday" class="regt_t">
                     </div>
                     <div class="col-lg-4">
                         <label for="idproof">Aadhar</label><br>
@@ -115,9 +115,28 @@
                         <label for="exp_certificate">Experiece Certificate</label><br>
                         <input type="file" name="exp_certificate" id="exp_certificate" >
                     </div>
-                    <div class="col-lg-12">
-                        <input type="text" name="practiceareas" id="">
-                    </div>
+                      <label for="parea">Practice Areas</label>
+                      {% for i in data %}
+                      <div class="col-lg-4 pcheck">
+                        {{i.p_area}}
+                        <input type="checkbox" name="parea" id="" value="{{i.p_area}}">
+                        &nbsp;
+                      </div>
+                      {% endfor %}
+                    <label for="">Langauges</label>
+                      <div class="col-lg-4 check" style="display: flex; flex-direction: row; justify-content: center; align-items: center;" >
+                        <input type="checkbox" name="" id="">Malayalam
+                      </div>
+                      <div class="col-lg-4 check" style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
+                        <input type="checkbox" name="" id=""> English
+                      </div>  
+                      <div class="col-lg-4 check" style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
+                        <input type="checkbox" name="" id=""> Hindi
+                      </div>
+                      <!-- <div class="col-lg-3">
+                        <input type="checkbox" name="" id="" checked> Malayalam
+                      </div> -->
+                    
                     
                 </div>
             </form>

@@ -170,4 +170,5 @@ def Adv_index(request):
         return redirect(login)
     
 def Adv_reg_form(request):
-    return render(request,'adv/adv_reg_form.html')
+    data=Practice_areas.objects.all()
+    return render(request,'adv/adv_reg_form.html',{'data':data})

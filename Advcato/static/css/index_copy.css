@@ -109,12 +109,55 @@ ul li:hover{
     transition: all ease 2s;
 }
 .firstline label{
-    color: white;
+    color: rgb(255, 255, 255);
     font-weight: 600;
 }
 .firstline input{
     margin-left:15px ;
 }
-/* .firstline{
-    background-color: red;
+.firstline select{
+    margin-left: 15px;
+}
+.check{
+    color: rgb(255, 255, 255);
+
+}
+.firstline{
+    padding: 20px;
+}
+.firstline div{
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+    justify-content: center;
+    align-items: start;
+    margin-bottom: 25px;
+}
+.regt_t,input[type='time'],input[type='file'],select{
+    background-color: transparent;
+    width: 60%;
+    height: 40px;
+    border: 1px solid grey;
+    border-radius: 15px;
+    color: white;
+    
+}
+.starting-page{
+    background-image: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.7)), url('../images/lawyer.png'); 
+    background-repeat: no-repeat; 
+    background-size: cover;
+}
+
+input[type='text']{
+    padding: 10px;
+}
+select{
+    height: 200px;
+    padding: 10px;
+}
+/* .pcheck{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+color: white;
 } */

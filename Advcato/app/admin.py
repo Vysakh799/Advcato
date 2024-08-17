@@ -3,3 +3,7 @@ from .models import *
 # Register your models here.
 
 admin.site.register(User)
+admin.site.register(Advocate)
+admin.site.register(Langauges)
+admin.site.register(Practice_areas)
+admin.site.register(Selected_parea)

@@ -41,26 +41,14 @@ class Langauges(models.Model):
         return self.aname.aname
 
 class Practice_areas(models.Model):
-    # aname=models.ForeignKey(Advocate,on_delete=models.CASCADE)
-    # criminal_law=models.BooleanField(default=False)
-    # civil_right_law=models.BooleanField(default=False)
-    # family_law=models.BooleanField(default=False)
-    # corporate_law=models.BooleanField(default=False)
-    # intelectual_property_law=models.BooleanField(default=False)
-    # employment_law=models.BooleanField(default=False)
-    # personal_injury_law=models.BooleanField(default=False)
-    # real_estate_law=models.BooleanField(default=False)
-    # estate_planing_and_probate_law=models.BooleanField(default=False)
-    # environmental_law=models.BooleanField(default=False)
-    # bankruptcy_law=models.BooleanField(default=False)
-    # immigration_law=models.BooleanField(default=False)
-    # healthcare_law=models.BooleanField(default=False)   
-    # tax_law=models.BooleanField(default=False)
-    # admiralty_and_maritime_law=models.BooleanField(default=False)
-    # entertainment_law=models.BooleanField(default=False)
-    p_areas=models.ManyToManyField(Advocate,blank=False)
+    p_area=models.TextField(null=True)
 
+    def __str__(self) :
+        return self.p_area
 
+class Selected_parea(models.Model):
+    p_area_name=models.ForeignKey(Practice_areas,on_delete=models.CASCADE)
+    aname=models.ForeignKey(Advocate,on_delete=models.CASCADE)
     
 
 
