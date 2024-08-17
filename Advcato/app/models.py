@@ -32,13 +32,16 @@ class Advocate(models.Model):
         return self.aname
 
 class Langauges(models.Model):
-    aname=models.ForeignKey(Advocate,on_delete=models.CASCADE)
-    malayalam=models.BooleanField(default=False)
-    english=models.BooleanField(default=False)
-    hindi=models.BooleanField(default=False)
+    language=models.TextField(null=True)
 
     def __str__(self):
+        return self.language
+class Selected_lang(models.Model):
+    aname=models.ForeignKey(Advocate,on_delete=models.CASCADE)
+    alang=models.ForeignKey(Langauges,on_delete=models.CASCADE)
+    def __str__(self) :
         return self.aname.aname
+
 
 class Practice_areas(models.Model):
     p_area=models.TextField(null=True)
@@ -49,6 +52,9 @@ class Practice_areas(models.Model):
 class Selected_parea(models.Model):
     p_area_name=models.ForeignKey(Practice_areas,on_delete=models.CASCADE)
     aname=models.ForeignKey(Advocate,on_delete=models.CASCADE)
+
+    def __str__(self) :
+        return self.aname.aname
     
 
 

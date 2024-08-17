@@ -106,15 +106,16 @@ def Adv_reg(request):
     if request.method=='POST':
         aname=request.POST['name']
         aphone=request.POST['phno']
+        agender=request.POST['gender']
         aemail=request.POST['email']
         aaddress=request.POST['address'] 
         apassword=request.POST['password']
         cnf_password=request.POST['cnf_password']
-        if apassword==cnf_password:
+        if apassword==cnf_password: 
             psw=apassword.encode('utf-8')
             salt=bcrypt.gensalt()               #Password Hashing
             psw_hashed=bcrypt.hashpw(psw,salt)
-            data=Advocate.objects.create(aname=aname,aphone=aphone,aemail=aemail,aaddress=aaddress,apassword=psw_hashed.decode('utf-8'))
+            data=Advocate.objects.create(aname=aname,aphone=aphone,agender=agender,aemail=aemail,aaddress=aaddress,apassword=psw_hashed.decode('utf-8'))
             data.save()
             messages.success(request, "Account created successfully pls login to continue !")
             return redirect(login)
@@ -170,5 +171,29 @@ def Adv_index(request):
         return redirect(login)
     
 def Adv_reg_form(request):
-    data=Practice_areas.objects.all()
-    return render(request,'adv/adv_reg_form.html',{'data':data})
+    if 'adv' in request.session:
+        lang=Langauges.objects.all()
+        parea=Practice_areas.objects.all()
+        adv=Advocate.objects.get(aname=request.session['adv'])
+        if request.method=='POST':
+            bcr_no=request.POST['bcr_no']
+            aheighest_qual=request.POST['aheighest_qual']
+            start_time=request.POST['start_time']
+            endtime=request.POST['endtime']
+            offday=request.POST['offday']
+            idproof=request.FILES['idproof']
+            bc_certificate=request.FILES['bc_certificate']
+            exp_certificate=request.FILES['exp_certificate']
+            pareas=request.POST.getlist('pareas')
+            langs=request.POST.getlist('langs')
+            data=Advocate.objects.filter(aname=request.session['adv']).update(bcr_no=bcr_no,aheighest_qual=aheighest_qual,start_time=start_time,end_time=endtime,off_day=offday,idproof=idproof,bc_certificate=bc_certificate,exp_certificate=exp_certificate)
+            for i in pareas:
+                    p_area=Practice_areas.objects.get(p_area=i)
+                    data=Selected_parea.objects.create(p_area_name=p_area,aname=adv)
+                    data.save()
+            for i in langs:
+                language=Langauges.objects.get(language=i)
+                data=Selected_lang.objects.create(aname=adv,alang=language)
+                data.save()
+            
+    return render(request,'adv/adv_reg_form.html',{'data':parea,'lang':lang})

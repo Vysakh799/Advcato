@@ -80,36 +80,37 @@
             </div>
           </div>-->
           <div class="form_after-log">
-            <form action="" method="POST">
+            <form action="../Adv_reg_form" method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
                 <div class="firstline row">
                     <div class="col-lg-6">
                         <label for="bcr_no">Bar Counclil Registration No.</label><br>
-                        <input type="text" name="bcr_no" id="bcr_no" class="regt_t">
+                        <input type="text" name="bcr_no" id="bcr_no" class="regt_t" required>
                     </div>
                     <div class="col-lg-6">
                         <label for="aheighest_qual">Heighest Qualification</label><br>
-                        <input type="text" name="aheighest_qual" id="aheighest_qual" class="regt_t" >
+                        <input type="text" name="aheighest_qual" id="aheighest_qual" class="regt_t" required>
                     </div>
                     <!-- <span style="color: white; margin-top: 15px; font-size: 18px;">Working Hours</span> -->
                     <div class="col-lg-4">
                         <label for="start_time">Consultation Starts at</label><br>
-                        <input type="time" name="start_time" id="start_time" >
+                        <input type="time" name="start_time" id="start_time" required>
                     </div>
                     <div class="col-lg-4">
                         <label for="endtime">Consultation Ends at </label><br>
-                        <input type="time" name="endtime" id="endtime" >
+                        <input type="time" name="endtime" id="endtime" required>
                     </div>
                     <div class="col-lg-4">
                         <label for="offday">Offday</label><br>
-                        <input type="text" name="offday" id="offday" class="regt_t">
+                        <input type="text" name="offday" id="offday" class="regt_t" required>
                     </div>
                     <div class="col-lg-4">
                         <label for="idproof">Aadhar</label><br>
-                        <input type="file" name="idproof" id="idproof" >
+                        <input type="file" name="idproof" id="" required>
                     </div>
                     <div class="col-lg-4">
                         <label for="bc_certificate">Bar Council Certificate</label><br>
-                        <input type="file" name="bc_certificate" id="bc_certificate" >
+                        <input type="file" name="bc_certificate" id="bc_certificate" required>
                     </div>
                     <div class="col-lg-4">
                         <label for="exp_certificate">Experiece Certificate</label><br>
@@ -118,20 +119,18 @@
                       <label for="parea">Practice Areas</label>
                       {% for i in data %}
                       <div class="col-lg-4 pcheck">
-                        {{i.p_area}}
-                        <input type="checkbox" name="parea" id="" value="{{i.p_area}}">
-                        &nbsp;
+                        <input type="checkbox" name="pareas" id="" value="{{i.p_area}}">
+                        &nbsp;{{i.p_area}}
                       </div>
                       {% endfor %}
                     <label for="">Langauges</label>
-                      <div class="col-lg-4 check" style="display: flex; flex-direction: row; justify-content: center; align-items: center;" >
-                        <input type="checkbox" name="" id="">Malayalam
+                      {% for i in lang %}
+                      <div class="col-lg-4 check">
+                        <input type="checkbox" name="langs" id="" value="{{i.language}}"> {{i.language}}
                       </div>
-                      <div class="col-lg-4 check" style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
-                        <input type="checkbox" name="" id=""> English
-                      </div>  
-                      <div class="col-lg-4 check" style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
-                        <input type="checkbox" name="" id=""> Hindi
+                      {% endfor %}
+                      <div class="col-lg-12">
+                        <input type="submit" value="Save & Continue" class="btn btn-dark w-100">
                       </div>
                       <!-- <div class="col-lg-3">
                         <input type="checkbox" name="" id="" checked> Malayalam

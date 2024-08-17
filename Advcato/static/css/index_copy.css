@@ -118,7 +118,8 @@ ul li:hover{
 .firstline select{
     margin-left: 15px;
 }
-.check{
+.firstline .check{
+    display: inline;
     color: rgb(255, 255, 255);
 
 }
@@ -155,9 +156,14 @@ select{
     height: 200px;
     padding: 10px;
 }
-/* .pcheck{
-    display: flex;
+.firstline .pcheck{
+    margin-top: 10px;
+    display: inline;
     justify-content: center;
-    align-items: center;
+    
 color: white;
-} */
+}
+input[type='file']{
+    border: none;
+    border-radius: 0px;
+}
