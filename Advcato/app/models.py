@@ -55,7 +55,37 @@ class Selected_parea(models.Model):
 
     def __str__(self) :
         return self.aname.aname
-    
 
+class Cases(models.Model):
+    aname=models.ForeignKey(Advocate,on_delete=models.CASCADE)
+    casenumber=models.IntegerField()
+    court=models.TextField()
+    judge=models.TextField()
+    reg_date=models.DateField()
+    next_hearing=models.DateField()
+    case_summery=models.TextField()
+    case_subjet=models.TextField()
+    completed=models.BooleanField(default=False)
+
+    def __str__(self) :
+        return self.case_subjet
+
+class Parties(models.Model):
+    case=models.ForeignKey(Cases,on_delete=models.CASCADE)
+    uname=models.ForeignKey(User,on_delete=models.CASCADE)
+    dname=models.TextField()
+    daddress=models.TextField()
+    dphno=models.TextField(null=True)
+    demail=models.TextField(null=True)
+
+    def __str__(self) :
+        return self.case.case_subjet
+    
+class Chat(models.Model):
+    uname=models.ForeignKey(User,on_delete=models.CASCADE)
+    aname=models.ForeignKey(Advocate,on_delete=models.CASCADE)
+    messege=models.TextField()
+
+    
 
 

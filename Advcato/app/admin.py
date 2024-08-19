@@ -8,3 +8,7 @@ admin.site.register(Langauges)
 admin.site.register(Practice_areas)
 admin.site.register(Selected_parea)
 admin.site.register(Selected_lang)
+admin.site.register(Cases)
+admin.site.register(Parties)
+admin.site.register(Chat)
+
