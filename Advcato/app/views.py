@@ -25,6 +25,9 @@ def about(request):
 def contact(request):
     return render(request,'contact.html')
 
+def Advocates(request):
+    return render(request,'user/advocates.html')
+
 #user
 def Ureg(request):
     if request.method=='POST':
@@ -131,14 +134,17 @@ def Adv_log(request):
         print(psw,password,epho)
         try:
             data=Advocate.objects.get(aphone=epho)
-            print(data)
+            # print(data)
             # ps2=data.upassword.encode('utf-8')
             # print(data,ps2)
             if bcrypt.checkpw(psw,data.apassword.encode('utf-8')):
                 request.session['adv']=data.aname
                 print("logged in")
+                if data.status:
+                    return redirect(Adv_index)
                 # messages.success(request, "Login successfully completed!") 
-                return redirect(Adv_reg_form)
+                else:
+                    return redirect(Adv_reg_form)
             else:
                 messages.add_message(request,messages.INFO, "Incorrect Password" ,extra_tags="danger")
                 return redirect(login)  
@@ -146,15 +152,17 @@ def Adv_log(request):
         except:
             try:
                 data=Advocate.objects.get(aemail=epho)
-                print(data)
-                if bcrypt.checkpw(psw,data.upassword.encode('utf-8')):
+                if bcrypt.checkpw(psw,data.apassword.encode('utf-8')):
                     request.session['adv']=data.aname
                     print("logged in")
-                    # messages.success(request, "Login successfully completed!") 
-                    return redirect(Adv_reg_form)
+                    if data.status:
+                        return redirect(Adv_index)
+                        # messages.success(request, "Login successfully completed!") 
+                    else:
+                        return redirect(Adv_reg_form)
                 else:
                     messages.add_message(request,messages.INFO, "Incorrect Password" ,extra_tags="danger")
-                    return redirect(login)
+                    return redirect(login) 
             except:
                 messages.add_message(request,messages.INFO, "Incorrect Email or Phonenumber!!" ,extra_tags="danger")
                 return redirect(login)
@@ -186,14 +194,19 @@ def Adv_reg_form(request):
             exp_certificate=request.FILES['exp_certificate']
             pareas=request.POST.getlist('pareas')
             langs=request.POST.getlist('langs')
-            data=Advocate.objects.filter(aname=request.session['adv']).update(bcr_no=bcr_no,aheighest_qual=aheighest_qual,start_time=start_time,end_time=endtime,off_day=offday,idproof=idproof,bc_certificate=bc_certificate,exp_certificate=exp_certificate)
-            for i in pareas:
+            if langs and pareas:
+                for i in pareas:
                     p_area=Practice_areas.objects.get(p_area=i)
                     data=Selected_parea.objects.create(p_area_name=p_area,aname=adv)
                     data.save()
-            for i in langs:
-                language=Langauges.objects.get(language=i)
-                data=Selected_lang.objects.create(aname=adv,alang=language)
-                data.save()
+                for i in langs:
+                    language=Langauges.objects.get(language=i)
+                    data=Selected_lang.objects.create(aname=adv,alang=language)
+                    data.save()
+                data=Advocate.objects.filter(aname=request.session['adv']).update(bcr_no=bcr_no,aheighest_qual=aheighest_qual,start_time=start_time,end_time=endtime,off_day=offday,idproof=idproof,bc_certificate=bc_certificate,exp_certificate=exp_certificate,status=True)
+                return redirect(Adv_index)
+            else:
+                messages.add_message(request,messages.INFO, "You missed something !!" ,extra_tags="danger")
+
             
     return render(request,'adv/adv_reg_form.html',{'data':parea,'lang':lang})

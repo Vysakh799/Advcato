@@ -105,7 +105,8 @@ ul li:hover{
     margin-bottom: 10px;
 }
 .para:hover{
-    border: 1px solid rgb(164, 164, 164);
+    /* border: 1px solid rgb(164, 164, 164); */
+    background-color: rgba(87, 85, 85, 0.425);
     transition: all ease 2s;
 }
 .firstline label{
@@ -166,4 +167,9 @@ color: white;
 input[type='file']{
     border: none;
     border-radius: 0px;
+}
+
+.adv{
+    background-color: red;
+    margin-top: -100px;
 }

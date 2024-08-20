@@ -27,6 +27,8 @@ class Advocate(models.Model):
     idproof=models.FileField(null=True)
     bc_certificate=models.FileField(null=True)
     exp_certificate=models.FileField(null=True)
+    status=models.BooleanField(default=False)
+
 
     def __str__(self):
         return self.aname
