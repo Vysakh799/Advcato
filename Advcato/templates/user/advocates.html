@@ -17,7 +17,7 @@
     <div class="main">
         <nav class="navbar navbar-expand-sm ">
             <div class="container-fluid">   
-              <a class="navbar-brand" href="../"><img src="{% static 'images/logo1.png' %}" alt=""><img src="{% static 'images/logo-t-negate.png' %}" style="height: 40px;" alt=""></a>
+              <a class="navbar-brand" href="User_index"><img src="{% static 'images/logo1.png' %}" alt=""><img src="{% static 'images/logo-t-negate.png' %}" style="height: 40px;" alt=""></a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -27,10 +27,10 @@
                     <a class="nav-link text-light font-weight-bold " href="javascript:void(0)">Home</a>
                   </li> -->
                   <li class="nav-item">
-                    <a class="nav-link text-light" href="about">Home</a>
+                    <a class="nav-link text-light" href="User_index">Home</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link text-light" href="contact">Advocates</a>
+                    <a class="nav-link text-light" href="Advocates">Advocates</a>
                   </li>
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"><i class="fa-regular fa-user text-light"></i></a>
@@ -51,29 +51,31 @@
                 <i class="fa-solid fa-magnifying-glass text-light" style="position: relative; top: 15px; right: 40px; opacity: 0.3;"></i>
             </div>
             <<div class="col-lg-12 pending-work" style="margin-top: -200px;">
-                <div class="container">
-                    <div class="phead">
-                        <i class="fa-regular fa-clock"></i>
-                        <p>Pending Cases</p>
-                    </div>
-                    <div class="para">
-                      <div class="work">
-                        <span style="font-size: 18px;">Pavithran case</span><br>
-                        Next Hearing : 05/09/2024
+                <div class="container total">
+                    {% for adv in Advocates %}
+                    <div class="para adv ">
+                        <a href="">
+                      <div class="row">
+                        <div class="profile a col-lg-1">
+                            <img src="{% static 'images/adv-logo.png' %}" class="rounded-circle img-fluid" style="height: 50px;" alt="">
+                          </div>
+                          <div class="name a col-lg-3">
+                            {{adv.aname}}
+                          </div>
+                          <div class="email a col-lg-3">
+                            {{adv.aemail}}
+                          </div>
+                          <div class="contact a col-lg-3">
+                            Ph : {{adv.aphone}}
+                          </div>
+                          <div class="location a col-lg-2 ">
+                            <i class="fa-solid fa-location-dot"></i>
+                                &nbsp;{{adv.amjtown}}
+                          </div>
                       </div>
+                        </a>
                     </div>
-                    <div class="para">
-                      <div class="work">
-                        <span style="font-size: 18px;">Pavithran case</span><br>
-                        Next Hearing : 05/09/2024
-                      </div>
-                    </div>
-                    <div class="para">
-                      <div class="work">
-                        <span style="font-size: 18px;">Pavithran case</span><br>
-                        Next Hearing : 05/09/2024
-                      </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
           </div>

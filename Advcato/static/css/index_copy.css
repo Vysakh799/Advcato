@@ -106,8 +106,8 @@ ul li:hover{
 }
 .para:hover{
     /* border: 1px solid rgb(164, 164, 164); */
-    background-color: rgba(87, 85, 85, 0.425);
-    transition: all ease 2s;
+    background-color: rgba(100, 100, 100, 0.425);
+    /* transition: all ease 2s; */
 }
 .firstline label{
     color: rgb(255, 255, 255);
@@ -170,6 +170,22 @@ input[type='file']{
 }
 
 .adv{
-    background-color: red;
-    margin-top: -100px;
+    /* background-color: red; */
+    width: 80%;
+    /* display: flex; */
+    /* justify-content: space-evenly; */
+}
+.para a{
+    text-decoration: none;
+    color: white;
+}
+.total{
+    margin-top: -150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.a{
+    display: flex;
+    align-items: center;
 }

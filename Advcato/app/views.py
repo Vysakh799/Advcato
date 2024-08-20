@@ -25,8 +25,6 @@ def about(request):
 def contact(request):
     return render(request,'contact.html')
 
-def Advocates(request):
-    return render(request,'user/advocates.html')
 
 #user
 def Ureg(request):
@@ -100,11 +98,14 @@ def User_index(request):
     else:
         return redirect(login)
 
+def Advocates(request):
+    data=Advocate.objects.all().order_by('aname')
+    return render(request,'user/advocates.html',{'Advocates':data})
 
 
 
 
-
+#Advocates
 def Adv_reg(request):
     if request.method=='POST':
         aname=request.POST['name']
@@ -186,6 +187,7 @@ def Adv_reg_form(request):
         if request.method=='POST':
             bcr_no=request.POST['bcr_no']
             aheighest_qual=request.POST['aheighest_qual']
+            amjtown=request.POST['amjtown']
             start_time=request.POST['start_time']
             endtime=request.POST['endtime']
             offday=request.POST['offday']
@@ -203,7 +205,7 @@ def Adv_reg_form(request):
                     language=Langauges.objects.get(language=i)
                     data=Selected_lang.objects.create(aname=adv,alang=language)
                     data.save()
-                data=Advocate.objects.filter(aname=request.session['adv']).update(bcr_no=bcr_no,aheighest_qual=aheighest_qual,start_time=start_time,end_time=endtime,off_day=offday,idproof=idproof,bc_certificate=bc_certificate,exp_certificate=exp_certificate,status=True)
+                data=Advocate.objects.filter(aname=request.session['adv']).update(bcr_no=bcr_no,aheighest_qual=aheighest_qual,amjtown=amjtown,start_time=start_time,end_time=endtime,off_day=offday,idproof=idproof,bc_certificate=bc_certificate,exp_certificate=exp_certificate,status=True)
                 return redirect(Adv_index)
             else:
                 messages.add_message(request,messages.INFO, "You missed something !!" ,extra_tags="danger")

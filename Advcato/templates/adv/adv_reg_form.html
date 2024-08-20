@@ -95,14 +95,18 @@
             <form action="../Adv_reg_form" method="POST" enctype="multipart/form-data">
               {% csrf_token %}
                 <div class="firstline row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-4">
                         <label for="bcr_no">Bar Counclil Registration No.</label><br>
                         <input type="text" name="bcr_no" id="bcr_no" class="regt_t" required>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-4">
                         <label for="aheighest_qual">Heighest Qualification</label><br>
                         <input type="text" name="aheighest_qual" id="aheighest_qual" class="regt_t" required>
                     </div>
+                    <div class="col-lg-4">
+                      <label for="amjtown">District</label><br>
+                      <input type="text" name="amjtown" id="amjtown" class="regt_t" required>
+                  </div>
                     <!-- <span style="color: white; margin-top: 15px; font-size: 18px;">Working Hours</span> -->
                     <div class="col-lg-4">
                         <label for="start_time">Consultation Starts at</label><br>

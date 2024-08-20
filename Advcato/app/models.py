@@ -19,6 +19,7 @@ class Advocate(models.Model):
     aaddress=models.TextField()
     aprofile=models.FileField(null=True)
     agender=models.TextField(null=True)
+    amjtown=models.TextField(null=True)
     bcr_no=models.TextField(null=True)
     aheighest_qual=models.TextField(null=True)
     start_time=models.TimeField(null=True)
