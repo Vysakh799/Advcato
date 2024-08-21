@@ -99,7 +99,7 @@ def User_index(request):
         return redirect(login)
 
 def Advocates(request):
-    data=Advocate.objects.all().order_by('aname')
+    data=Advocate.objects.filter(status=True).order_by('aname')
     return render(request,'user/advocates.html',{'Advocates':data})
 
 
