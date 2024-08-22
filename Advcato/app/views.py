@@ -99,7 +99,7 @@ def User_index(request):
         return redirect(login)
 
 def Advocates(request):
-    data=Advocate.objects.filter(status=True).order_by('aname')
+    data=Advocate.objects.filter(p_status=True).order_by('aname')
     return render(request,'user/advocates.html',{'Advocates':data})
 
 
@@ -173,9 +173,12 @@ def Adv_log(request):
 
 def Adv_index(request):
     if 'adv' in request.session:
-        adv=request.session['adv']
-        print(adv)
-        return render(request,'adv/adv_index.html',{'adv':adv})
+        aname=request.session['adv']
+        adv=Advocate.objects.get(aname=aname)
+        if adv.status:
+            return render(request,'adv/adv_index.html',{'adv':adv})
+        else:
+            return redirect(Adv_reg_form)
     else:
         return redirect(login)
     
@@ -211,4 +214,39 @@ def Adv_reg_form(request):
                 messages.add_message(request,messages.INFO, "You missed something !!" ,extra_tags="danger")
 
             
-    return render(request,'adv/adv_reg_form.html',{'data':parea,'lang':lang})
+        return render(request,'adv/adv_reg_form.html',{'data':parea,'lang':lang})
+    else:
+        return redirect(login)
+
+def Adv_profile(request):
+    if 'adv' in request.session:
+        advocate=Advocate.objects.get(aname=request.session['adv'])
+        return render(request,'adv/adv_profile.html',{'adv':advocate})
+    else:
+        return redirect(login)
+
+
+def advprof_Activate(request):
+    if 'adv' in request.session:
+        adv=Advocate.objects.get(aname=request.session['adv'])
+        advocate=Advocate.objects.filter(aname=request.session['adv']).update(p_status=True)
+        return redirect(Adv_profile)
+    else:
+        return redirect(login)
+def advprof_Deactivate(request):
+    if 'adv' in request.session:
+        advocate=Advocate.objects.filter(aname=request.session['adv']).update(p_status=False)
+        return redirect(Adv_profile)
+    else:
+        return redirect(login)
+
+def Update_prof(request):
+    if 'adv' in request.session:
+            advocate=Advocate.objects.get(aname=request.session['adv'])
+            lang=Langauges.objects.all()
+            parea=Practice_areas.objects.all()
+            sparea=Selected_parea.objects.filter(aname=advocate)
+            slang=Selected_lang.objects.filter(aname=advocate)
+            return render(request,'adv/update_prof.html',{'adv':advocate,'data':parea,'lang':lang,'sparea':sparea,'slang':slang})
+    else:
+        return redirect(login)

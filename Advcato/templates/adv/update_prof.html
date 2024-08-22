@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADVCATO</title>
+    <link rel="stylesheet" href="{% static 'css/index_copy.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'css/user_index.css' %}"> -->
+    <link rel="icon" href="{% static 'logot-img.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/7da30b5c41.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <div class="main">
+        <nav class="navbar navbar-expand-sm ">
+            <div class="container-fluid">   
+              <a class="navbar-brand" href="../"><img src="{% static 'images/logo1.png' %}" alt=""><img src="{% static 'images/logo-t-negate.png' %}" style="height: 40px;" alt=""></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <!-- <div class="collapse navbar-collapse  " id="mynavbar">
+                <ul class="navbar-nav ms-auto">
+                  <li class="nav-item">
+                    <a class="nav-link text-light" href="about">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link text-light" href="contact">Advocates</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link text-light" href="contact"><i class="fa-regular fa-message"></i></a>
+                  </li> 
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"><i class="fa-regular fa-user text-light"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-end bg-dark" style="overflow: hidden;">
+                      <li><a class="dropdown-item bg-dark text-light"  href="#">Profile</a></li>
+                      <li><a class="dropdown-item bg-dark text-light" href="User_logout">Logout <i class="fa-solid fa-right-from-bracket"></i> </a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div> -->
+            </div>
+          </nav>
+          <div class="starting-page row editing_home" style="margin: 0;">
+            <div class="messege1 d-flex justify-content-center" style="position: absolute; top: 10px;">
+              {% if messages%}
+              {% for message in messages%}    
+              <div class="alert alert-{{message.tags}} alert-dismissible fade show art-bx w-50" role="alert">
+                <strong>{{ message }}</strong> 
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                  <!-- <span aria-hidden="true">&times</span> -->
+                </button>
+              </div>
+              {%endfor%}
+              {%endif%}
+              </div>
+            <!-- <div class="main-heading col-lg-12 d-flex justify-content-center h-25">
+                <p style="font-size: 50px; font-weight: 700;" class="text-light"><span style="font-size: 65px;">W</span>elcome, {{adv}}</p>
+            </div>
+            <div class="col-lg-12 pending-work" style="margin-top: -200px;">
+                <div class="container">
+                    <div class="phead">
+                        <i class="fa-regular fa-clock"></i>
+                        <p>Pending works</p>
+                    </div>
+                    <div class="para">
+                      <div class="work">
+                        <span style="font-size: 18px;">Pavithran case</span><br>
+                        Next Hearing : 05/09/2024
+                      </div>
+                    </div>
+                    <div class="para">
+                      <div class="work">
+                        <span style="font-size: 18px;">Pavithran case</span><br>
+                        Next Hearing : 05/09/2024
+                      </div>
+                    </div>
+                    <div class="para">
+                      <div class="work">
+                        <span style="font-size: 18px;">Pavithran case</span><br>
+                        Next Hearing : 05/09/2024
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="banner col-lg-12 ">
+                    <img src="{% static 'images/hammer.png' %}" class="img-fluid" alt="">
+                </div>
+            </div>
+          </div>-->
+          <div class="form_after-log">
+            <form action="../Adv_reg_form" method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
+                <div class="firstline row">
+                    <div class="col-lg-4">
+                        <label for="bcr_no">Name</label><br>
+                        <input type="text" class="regt_t" name="name" id="" value="{{adv.aname}}">
+                    </div>
+                    <div class="col-lg-4">
+                        <label for="bcr_no">Email</label><br>
+                        <input type="text" class="regt_t" name="email" id="" value="{{adv.aemail}}">
+                    </div>
+                    <div class="col-lg-4">
+                        <label for="bcr_no">PhoneNumber</label><br>
+                        <input type="text" class="regt_t" name="phno" id="" value="{{adv.aphone}}">
+                    </div>
+                    <div class="col-lg-4">
+                        <label for="bcr_no">Gender</label><br>
+                        <input type="text" class="regt_t" name="gender" id="" value="{{adv.agender}}">
+                    </div>
+                    <div class="col-lg-4">
+                        <label for="bcr_no">Address</label><br>
+                        <textarea name="address" class="regt_t" id=""  style="margin-left: 10px; padding: 10px;" value="">{{adv.aaddress}}</textarea>
+                    </div>
+                    <div class="col-lg-4">
+                        <label for="bcr_no">Bar Counclil Registration No.</label><br>
+                        <input type="text" name="bcr_no" id="bcr_no" class="regt_t" required value="{{adv.bcr_no}}">
+                    </div>
+                    <div class="col-lg-4">
+                        <label for="aheighest_qual">Heighest Qualification</label><br>
+                        <input type="text" name="aheighest_qual" id="aheighest_qual" class="regt_t" required value="{{adv.aheighest_qual}}">
+                    </div>
+                    <div class="col-lg-4">
+                      <label for="amjtown">District</label><br>
+                      <input type="text" name="amjtown" id="amjtown" class="regt_t" required value="{{adv.amjtown}}">
+                  </div>
+                    <!-- <span style="color: white; margin-top: 15px; font-size: 18px;">Working Hours</span> -->
+                    <div class="col-lg-4">
+                        <label for="start_time">Consultation Starts at</label><br>
+                        <input type="time" name="start_time" id="start_time" required value="{{adv.start_time}}">
+                    </div>
+                    <div class="col-lg-4">
+                        <label for="endtime">Consultation Ends at </label><br>
+                        <input type="time" name="endtime" id="endtime" required value="{{adv.end_time}}">
+                    </div>
+                    <div class="col-lg-4">
+                        <label for="offday">Offday</label><br>
+                        <input type="text" name="offday" id="offday" class="regt_t" required value="{{adv.off_day}}">
+                    </div>
+                    <div class="col-lg-4">
+                    </div>
+                    <div class="col-lg-4">
+                        <label for="idproof">Aadhar</label><br>
+                        <input type="file" name="idproof" id="" required value="{{adv.idproof}}">
+                    </div>
+                    <div class="col-lg-4">
+                        <label for="bc_certificate">Bar Council Certificate</label><br>
+                        <input type="file" name="bc_certificate" id="bc_certificate" required>
+                    </div>
+                    <div class="col-lg-4">
+                        <label for="exp_certificate">Experiece Certificate</label><br>
+                        <input type="file" name="exp_certificate" id="exp_certificate" >
+                    </div>
+                      <label for="parea">Practice Areas</label>
+                      {% for i in data %}
+                      <div class="col-lg-4 pcheck">
+                        <input type="checkbox" name="pareas" id="" value="{{i.p_area}}" 
+                        {% for k in sparea %} 
+                            {% if k.p_area_name.p_area == i.p_area  %} 
+                                checked
+                            {% endif %} 
+                        {% endfor %}>
+                        &nbsp;{{i.p_area}}
+                      </div>
+                      {% endfor %}
+                    <label for="">Langauges</label>
+                      {% for i in lang %}
+                      <div class="col-lg-4 check mt-1">
+                        <input type="checkbox" name="langs" id="" value="{{i.language}}"
+                        {% for k in slang %}
+                            {% if k.alang.language == i.language %}
+                                checked
+                            {% endif %}
+                        {% endfor %}> {{i.language}}
+                      </div>
+                      {% endfor %}
+                      <div class="col-lg-12">
+                        <input type="submit" value="Save & Continue" class="btn btn-dark w-100">
+                      </div>
+                      <!-- <div class="col-lg-3">
+                        <input type="checkbox" name="" id="" checked> Malayalam
+                      </div> -->
+                    
+                    
+                </div>
+            </form>
+          </div>
+    </div>
+</body>
+</html>

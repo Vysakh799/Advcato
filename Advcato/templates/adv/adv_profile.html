@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADVCATO</title>
+    <link rel="stylesheet" href="{% static 'css/index_copy.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'css/user_index.css' %}"> -->
+    <link rel="icon" href="{% static 'logot-img.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/7da30b5c41.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <div class="main">
+        <nav class="navbar navbar-expand-sm ">
+            <div class="container-fluid">   
+              <a class="navbar-brand" href="../"><img src="{% static 'images/logo1.png' %}" alt=""><img src="{% static 'images/logo-t-negate.png' %}" style="height: 40px;" alt=""></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse  " id="mynavbar">
+                <ul class="navbar-nav ms-auto">
+                  <li class="nav-item">
+                    <a class="nav-link text-light" href="Adv_index">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link text-light" href="">Clients</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link text-light" href="contact"><i class="fa-regular fa-message"></i></a>
+                  </li> 
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"><i class="fa-regular fa-user text-light"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-end bg-dark" style="overflow: hidden;">
+                      <li><a class="dropdown-item bg-dark text-light"  href="#">Profile</a></li>
+                      <li><a class="dropdown-item bg-dark text-light" href="User_logout">Logout <i class="fa-solid fa-right-from-bracket"></i> </a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+          <div class="starting-page" >
+            <div class="row justify-content-center b-grid align-items-center" style="margin: 0;">
+                    <div class="pro_container col-lg-6 h-75">
+                        <div class="row">
+                            <div class="profile_image col-lg-12 d-flex justify-content-center align-items-center">
+                                <img src="{% static 'images/adv-logo.png' %}" class="rounded-circle img-fluid" style="height: 120px; width: 120px;" alt="">
+                                <p>{{adv.aname}}</p>
+                                <span style="color: rgb(124, 123, 123); margin-top: -20px; letter-spacing: 5px;">{{adv.bcr_no}}</span>
+                            </div>
+                            <div class="col-lg-6 px-5">
+                                <p><span style="color: rgb(86, 83, 83);">Email: </span>{{adv.aemail}}</p>
+                            </div>
+                            <div class="location a col-lg-6 px-5 ">
+                                <p><span style="color: rgb(86, 83, 83);">Phno: </span>{{adv.aphone}}</p>
+                            </div>
+                            <div class="col-lg-6 px-5">
+                                <p><span style="color: rgb(86, 83, 83);">Heighst Qual: </span>{{adv.aheighest_qual}}</p>
+                            </div>
+                            <div class="location a col-lg-6 px-5">
+                                <p><i class="fa-solid fa-location-dot"></i>
+                                    &nbsp;{{adv.amjtown}}</p>
+                            </div>
+                            <div class="col-lg-6 px-5">
+                                <p><i class="fa-regular fa-clock"></i> {{adv.start_time}} - {{adv.end_time}}</p>
+                                <p><span style="color: rgb(86, 83, 83);">Offday: </span>{{adv.off_day}}</p>
+                            </div>
+                            <div class="col-lg-6 px-5">
+                                <p>{{adv.aaddress}}</p>
+                            </div>
+                            <div class="col-lg-6 px-5">
+                                <a href="../Update_prof" class="btn btn-info text-light w-100">Edit Profile</a>
+                            </div>
+                            <div class="col-lg-6 px-5">
+                                {% if adv.p_status %}
+                                <a href="../advprof_Deactivate" class="btn btn-danger w-100">Deactivate</a>
+                                {% else %}
+                                <a href="../advprof_Activate" class="btn btn-success w-100">Activate</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+            </div>    
+          </div>
+    </div>
+</body>
+</html>

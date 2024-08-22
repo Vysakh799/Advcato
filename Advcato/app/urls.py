@@ -34,4 +34,8 @@ urlpatterns = [
     #Advocate
     path('Adv_index',views.Adv_index),
     path('Adv_reg_form',views.Adv_reg_form),
+    path('Adv_profile',views.Adv_profile),
+    path('advprof_Activate',views.advprof_Activate),
+    path('advprof_Deactivate',views.advprof_Deactivate),
+    path('Update_prof',views.Update_prof),
 ]

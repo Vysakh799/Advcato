@@ -29,6 +29,7 @@ class Advocate(models.Model):
     bc_certificate=models.FileField(null=True)
     exp_certificate=models.FileField(null=True)
     status=models.BooleanField(default=False)
+    p_status=models.BooleanField(default=False)
 
 
     def __str__(self):

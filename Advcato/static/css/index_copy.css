@@ -19,6 +19,9 @@ body{
     background-color: rgb(0, 0, 0);
 
 }
+.editing_home{
+    height: 122vh;
+}
 .banner img{
     height: 680px;
 }
@@ -146,7 +149,7 @@ ul li:hover{
 }
 .starting-page{
     background-image: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.7)), url('../images/lawyer.png'); 
-    background-repeat: no-repeat; 
+    background-repeat: repeat; 
     background-size: cover;
 }
 
@@ -188,4 +191,21 @@ input[type='file']{
 .a{
     display: flex;
     align-items: center;
+}
+.b-grid{
+    height: 85vh;
+}
+.pro_container{
+    background-color: rgba(63, 62, 62, 0.463);
+    color: white;
+    border-radius: 25px;
+}
+.profile_image{
+    position: relative;
+    top: -60px;
+    flex-direction: column;
+}
+.profile_image p{
+    font-size: 20px;
+    letter-spacing: 5px;
 }
