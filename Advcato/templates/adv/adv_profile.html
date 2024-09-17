@@ -77,9 +77,9 @@
                             </div>
                             <div class="col-lg-6 px-5">
                                 {% if adv.p_status %}
-                                <a href="../advprof_Deactivate" class="btn btn-danger w-100">Deactivate</a>
+                                <a href="../advprof_Deactivate" class="btn btn-danger w-100" onclick="return confirm('Are you sure you want to deactivate your profile !!')">Deactivate</a>
                                 {% else %}
-                                <a href="../advprof_Activate" class="btn btn-success w-100">Activate</a>
+                                <a href="../advprof_Activate" class="btn btn-success w-100" onclick="return confirm('Are you sure you want to activate your profile !!')">Activate</a>
                                 {% endif %}
                             </div>
                         </div>

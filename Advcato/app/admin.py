@@ -12,3 +12,4 @@ admin.site.register(Cases)
 admin.site.register(Parties)
 admin.site.register(Chat)
 
+
