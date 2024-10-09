@@ -27,10 +27,13 @@
                     <a class="nav-link text-light font-weight-bold " href="javascript:void(0)">Home</a>
                   </li> -->
                   <li class="nav-item">
-                    <a class="nav-link text-light" href="User_index">Home</a>
+                    <a class="nav-link text-light" href="../User_index">Home</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link text-light" href="Advocates">Advocates</a>
+                    <a class="nav-link text-light" href="../Advocates">Advocates</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link text-light" href="../user_msg"><i class="fa-regular fa-message"></i></a>
                   </li>
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"><i class="fa-regular fa-user text-light"></i></a>
@@ -53,8 +56,9 @@
             <<div class="col-lg-12 pending-work" style="margin-top: -200px;">
                 <div class="container total">
                     {% for adv in Advocates %}
-                    <div class="para adv ">
-                        <a href="">
+                    <a href="">
+                      <div class="para adv ">
+                        <a href="../advuser_profile/{{adv.pk}}">
                       <div class="row">
                         <div class="profile a col-lg-1">
                             <img src="{% static 'images/adv-logo.png' %}" class="rounded-circle img-fluid" style="height: 50px;" alt="">
@@ -75,6 +79,7 @@
                       </div>
                         </a>
                     </div>
+                    </a>
                     {% endfor %}
                 </div>
             </div>

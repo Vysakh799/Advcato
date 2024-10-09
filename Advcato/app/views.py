@@ -102,7 +102,11 @@ def Advocates(request):
     data=Advocate.objects.filter(p_status=True).order_by('aname')
     return render(request,'user/advocates.html',{'Advocates':data})
 
-
+def advuser_profile(request,pk):
+    adv=Advocate.objects.get(pk=pk)
+    return render(request,"user/advuser_profile.html",{"adv":adv})
+def user_msg(request):
+    return render(request,'user/user_msg.html')
 
 
 #Advocates

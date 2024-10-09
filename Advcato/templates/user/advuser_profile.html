@@ -15,34 +15,39 @@
 </head>
 <body>
     <div class="main">
-        <nav class="navbar navbar-expand-sm ">
-            <div class="container-fluid">   
-              <a class="navbar-brand" href="../"><img src="{% static 'images/logo1.png' %}" alt=""><img src="{% static 'images/logo-t-negate.png' %}" style="height: 40px;" alt=""></a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse  " id="mynavbar">
-                <ul class="navbar-nav ms-auto">
-                  <li class="nav-item">
-                    <a class="nav-link text-light" href="Adv_index">Home</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link text-light" href="">Clients</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link text-light" href="contact"><i class="fa-regular fa-message"></i></a>
-                  </li> 
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"><i class="fa-regular fa-user text-light"></i></a>
-                    <ul class="dropdown-menu dropdown-menu-end bg-dark" style="overflow: hidden;">
-                      <li><a class="dropdown-item bg-dark text-light"  href="#">Profile</a></li>
-                      <li><a class="dropdown-item bg-dark text-light" href="User_logout">Logout <i class="fa-solid fa-right-from-bracket"></i> </a></li>
-                    </ul>
-                  </li>
+      <nav class="navbar navbar-expand-sm ">
+        <div class="container-fluid">   
+          <a class="navbar-brand" href="User_index"><img src="{% static 'images/logo1.png' %}" alt=""><img src="{% static 'images/logo-t-negate.png' %}" style="height: 40px;" alt=""></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse  " id="mynavbar">
+            <ul class="navbar-nav ms-auto">
+              <!-- <li class="nav-item">
+                <a class="nav-link text-light font-weight-bold " href="javascript:void(0)">Home</a>
+              </li> -->
+              <li class="nav-item">
+                <a class="nav-link text-light" href="../User_index">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-light" href="../Advocates">Advocates</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-light" href="../user_msg"><i class="fa-regular fa-message"></i></a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"><i class="fa-regular fa-user text-light"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end bg-dark" style="overflow: hidden;">
+                  <li><a class="dropdown-item bg-dark text-light"  href="#">Profile</a></li>
+                  <li><a class="dropdown-item bg-dark text-light" href="User_logout">Logout <i class="fa-solid fa-right-from-bracket"></i> </a></li>
+                  <!-- <li><a class="dropdown-item bg-dark text-light" href="#">A third link</a></li> -->
                 </ul>
-              </div>
-            </div>
-          </nav>
+              </li>
+            </ul>
+          </div>
+          
+        </div>
+      </nav>
           <div class="starting-page" >
             <div class="row justify-content-center b-grid align-items-center" style="margin: 0;">
                     <div class="pro_container col-lg-6 h-75">
@@ -72,16 +77,16 @@
                             <div class="col-lg-6 px-5">
                                 <p>{{adv.aaddress}}</p>
                             </div>
-                            <div class="col-lg-6 px-5">
-                                <a href="../Update_prof" class="btn text-bg-light w-100">Edit Profile</a>
+                            <div class="col-lg-12 px-5">
+                                <a href="#" class="btn text-bg-success w-100">Message</a>
                             </div>
-                            <div class="col-lg-6 px-5">
+                            <!-- <div class="col-lg-6 px-5">
                                 {% if adv.p_status %}
                                 <a href="../advprof_Deactivate" class="btn btn-danger w-100" onclick="return confirm('Are you sure you want to deactivate your profile !!')">Deactivate</a>
                                 {% else %}
                                 <a href="../advprof_Activate" class="btn btn-success w-100" onclick="return confirm('Are you sure you want to activate your profile !!')">Activate</a>
                                 {% endif %}
-                            </div>
+                            </div> -->
                         </div>
                     </div>
             </div>    

@@ -23,6 +23,8 @@ urlpatterns = [
     path('User_index',views.User_index),
     path('User_logout',views.User_logout),
     path('Advocates',views.Advocates),
+    path('advuser_profile/<pk>',views.advuser_profile),
+    path('user_msg',views.user_msg),
 
 
     #Advocate_reg

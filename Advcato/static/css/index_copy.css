@@ -209,3 +209,12 @@ input[type='file']{
     font-size: 20px;
     letter-spacing: 5px;
 }
+.notification{
+    position: relative;
+    bottom: 29px;
+    left: 14px;
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    background-color: red;
+}
