@@ -25,6 +25,7 @@ urlpatterns = [
     path('Advocates',views.Advocates),
     path('advuser_profile/<pk>',views.advuser_profile),
     path('user_msg',views.user_msg),
+    path('useradv_chat',views.useradv_chat),
 
 
     #Advocate_reg

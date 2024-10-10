@@ -99,15 +99,30 @@ def User_index(request):
         return redirect(login)
 
 def Advocates(request):
-    data=Advocate.objects.filter(p_status=True).order_by('aname')
-    return render(request,'user/advocates.html',{'Advocates':data})
+    if getuser(request):
+        data=Advocate.objects.filter(p_status=True).order_by('aname')
+        return render(request,'user/advocates.html',{'Advocates':data})
+    else:
+        return redirect(login)
+    
 
 def advuser_profile(request,pk):
-    adv=Advocate.objects.get(pk=pk)
-    return render(request,"user/advuser_profile.html",{"adv":adv})
+    if getuser(request):
+        adv=Advocate.objects.get(pk=pk)
+        return render(request,"user/advuser_profile.html",{"adv":adv})
+    else:
+        return redirect(login)
 def user_msg(request):
-    return render(request,'user/user_msg.html')
+    if getuser(request):
+        return render(request,'user/user_msg.html')
+    else:
+        return redirect(login)
 
+def useradv_chat(request):
+    if getuser(request):
+        return render(request,"user/useradv_chat.html")
+    else:
+        return redirect(login)
 
 #Advocates
 def Adv_reg(request):

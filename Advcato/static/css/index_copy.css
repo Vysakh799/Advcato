@@ -218,3 +218,42 @@ input[type='file']{
     border-radius: 50%;
     background-color: red;
 }
+.msg_count{
+    height: 20px;
+    width: 20px;
+    background-color: rgb(251, 2, 2);
+    border-radius: 50%;
+    font-size: 13px;
+    padding: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.chat-div{  
+    background-color: rgba(63, 62, 62, 0.463);
+    border-radius: 20px;
+}
+.send-btn{
+    color: white;
+    border-radius: 50%;
+    border: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    right: 8px;
+    top: 4px;
+}
+.chat{
+    background-color: white;
+    width: fit-content;
+    padding: 5px;
+    border-radius: 20px;
+}
+/* .advocate{
+    position: absolute;
+    left: 0px;
+    color: white;
+} */
