@@ -41,4 +41,5 @@ urlpatterns = [
     path('advprof_Activate',views.advprof_Activate),
     path('advprof_Deactivate',views.advprof_Deactivate),
     path('Update_prof',views.Update_prof),
+    path('advuser_chat',views.advuser_chat),
 ]

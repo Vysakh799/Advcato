@@ -269,3 +269,7 @@ def Update_prof(request):
             return render(request,'adv/update_prof.html',{'adv':advocate,'data':parea,'lang':lang,'sparea':sparea,'slang':slang})
     else:
         return redirect(login)
+    
+
+def advuser_chat(request):
+    return render(request,"adv/advuser_chat.html")
