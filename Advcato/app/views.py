@@ -118,9 +118,10 @@ def user_msg(request):
     else:
         return redirect(login)
 
-def useradv_chat(request):
+def useradv_chat(request,pk):
     if getuser(request):
-        return render(request,"user/useradv_chat.html")
+        adv=Advocate.objects.get(pk=pk)
+        return render(request,"user/useradv_chat.html",{"adv":adv})
     else:
         return redirect(login)
 
