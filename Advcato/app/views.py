@@ -121,9 +121,20 @@ def user_msg(request):
 def useradv_chat(request,pk):
     if getuser(request):
         adv=Advocate.objects.get(pk=pk)
-        return render(request,"user/useradv_chat.html",{"adv":adv})
+        user=User.objects.get(uname=request.session['user'])
+        msgs=Chat.objects.filter(uname=user,aname=adv)
+        Chat.objects.filter(uname=user,aname=adv,advs=True).update(userread_status=True)
+        if request.method=='POST':
+            msg=request.POST['msg_box']
+            data=Chat.objects.create(uname=user,aname=adv,messege=msg,userread_status=True)
+        
+        return render(request,"user/useradv_chat.html",{"adv":adv,"msgs":msgs})
     else:
         return redirect(login)
+# def user_sendmsg(request,pk):
+#     adv=Advocate.objects.get(pk=pk)
+   
+#     return redirect(useradv_chat)
 
 #Advocates
 def Adv_reg(request):
@@ -190,6 +201,12 @@ def Adv_log(request):
     else:
         return redirect(login)
 
+def Adv_logout(request):
+    if "adv" in request.session:
+        del request.session['adv']
+        return redirect(index)
+    else:
+        return redirect(login)
 
 def Adv_index(request):
     if 'adv' in request.session:
@@ -271,6 +288,8 @@ def Update_prof(request):
     else:
         return redirect(login)
     
+def adv_msg(request):
+    return render(request,'adv/adv_msg.html')
 
 def advuser_chat(request):
     return render(request,"adv/advuser_chat.html")

@@ -71,11 +71,13 @@
               </div>
               <hr class="text-light">
               <div class="chat-area h-100 position-relative">
+                <!-- for loop -->
                 <div class="carea d-flex justify-content-end mt-1">
                   <div class="chat px-2 bg-success text-light">
                     Helo
                   </div>
                 </div>
+                <!-- forloop ends -->
                 <div class="carea d-flex justify-content-start mt-1">
                   <div class="chat px-2">
                     Hi
@@ -95,8 +97,9 @@
               </div>
               <div class="msgbox col-lg-12 mb-1">
                 <div class="col-lg-12 login-inp mt-1" style="height: 50px; display: flex; justify-content: center;">
-                  <form action="" class="col-lg-12 d-flex position-relative">
-                      <input type="text" name="" id="" style="width: 100%; border-radius: 25px; border: 1px solid rgb(20, 19, 19); background-color: rgb(20, 19, 19);" placeholder="Message" class="inp-login px-3">
+                  <form action="../useradv_chat/{{adv.pk}}" method="POST" class="col-lg-12 d-flex position-relative">
+                    {% csrf_token %}
+                      <input type="text" name="msg_box" id="" style="width: 100%; border-radius: 25px; border: 1px solid rgb(20, 19, 19); background-color: rgb(20, 19, 19);" placeholder="Message" class="inp-login px-3">
                       <button type="submit" class="send-btn bg-success"><span class="material-symbols-outlined">
                         send
                         </span></button>

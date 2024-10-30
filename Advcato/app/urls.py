@@ -26,6 +26,7 @@ urlpatterns = [
     path('advuser_profile/<pk>',views.advuser_profile),
     path('user_msg',views.user_msg),
     path('useradv_chat/<pk>',views.useradv_chat),
+    # path('user_sendmsg/<pk>',views.user_sendmsg),
 
 
     #Advocate_reg
@@ -33,6 +34,7 @@ urlpatterns = [
 
     #Advocate_log
     path('Adv_log',views.Adv_log),
+    path('Adv_logout',views.Adv_logout),
 
     #Advocate
     path('Adv_index',views.Adv_index),
@@ -41,5 +43,6 @@ urlpatterns = [
     path('advprof_Activate',views.advprof_Activate),
     path('advprof_Deactivate',views.advprof_Deactivate),
     path('Update_prof',views.Update_prof),
+    path('adv_msg',views.adv_msg),
     path('advuser_chat',views.advuser_chat),
 ]

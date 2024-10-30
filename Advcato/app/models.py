@@ -89,6 +89,10 @@ class Chat(models.Model):
     uname=models.ForeignKey(User,on_delete=models.CASCADE)
     aname=models.ForeignKey(Advocate,on_delete=models.CASCADE)
     messege=models.TextField()
+    advread_status=models.BooleanField(default=False)
+    userread_status=models.BooleanField(default=False)
+    advs=models.BooleanField(default=False)
+
 
     
 
