@@ -2,6 +2,9 @@ from django.shortcuts import render,redirect
 from .models import *
 import bcrypt
 from django.contrib import messages
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+from itertools import zip_longest
 # Create your views here.
 
 def getuser(request):
@@ -127,7 +130,9 @@ def useradv_chat(request,pk):
         if request.method=='POST':
             msg=request.POST['msg_box']
             data=Chat.objects.create(uname=user,aname=adv,messege=msg,userread_status=True)
-        
+            return redirect(reverse('useradv_chat',args=[pk]))
+            # return HttpResponseRedirect(reverse('useradv_chat', args=[pk]))
+
         return render(request,"user/useradv_chat.html",{"adv":adv,"msgs":msgs})
     else:
         return redirect(login)
@@ -287,9 +292,49 @@ def Update_prof(request):
             return render(request,'adv/update_prof.html',{'adv':advocate,'data':parea,'lang':lang,'sparea':sparea,'slang':slang})
     else:
         return redirect(login)
-    
-def adv_msg(request):
-    return render(request,'adv/adv_msg.html')
 
-def advuser_chat(request):
-    return render(request,"adv/advuser_chat.html")
+def adv_clients(request):
+    if 'adv' in request.session:
+        adv=Advocate.objects.get(aname=request.session['adv'])
+        users1=Chat.objects.filter(aname=adv)
+        usernames=[]
+        for i in users1:
+            usernames.append(i.uname)
+        d_usernames=set(usernames)
+        users=list(d_usernames)
+        return render(request,'adv/adv_clients.html',{'users':users})
+
+
+def adv_msg(request):
+        if 'adv' in request.session:
+            adv=Advocate.objects.get(aname=request.session['adv'])
+            users1=Chat.objects.filter(aname=adv)
+            usernames=[]
+            for i in users1:
+                usernames.append(i.uname)
+            d_usernames=set(usernames)
+            users=list(d_usernames)
+            # print(users)
+            count=[]
+            counts=0
+            for i in users:
+                data=Chat.objects.filter(uname=i,advread_status=False)
+                print(data)
+                count.append(len(data))
+            print(count)    
+            userchatcount=zip_longest(users,count)
+            print(userchatcount)
+
+            return render(request,'adv/adv_msg.html',{'user_chatcount':userchatcount})
+
+def advuser_chat(request,pk):
+    if 'adv' in request.session:
+        user=User.objects.get(pk=pk)
+        adv=Advocate.objects.get(aname=request.session['adv'])
+        msgs=Chat.objects.filter(uname=user,aname=adv)
+        Chat.objects.filter(uname=user,aname=adv,advs=False).update(advread_status=True)
+        if request.method=='POST':
+            msg=request.POST['msg_box']
+            data=Chat.objects.create(uname=user,aname=adv,messege=msg,advread_status=True,advs=True)
+            return redirect(reverse('advuser_chat',args=[pk]))
+        return render(request,"adv/advuser_chat.html",{'user':user,'msgs':msgs})

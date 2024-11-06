@@ -71,14 +71,14 @@
               </div>
               <hr class="text-light">
               <div class="chat-area h-100 position-relative">
-                <!-- for loop -->
+                {% for i in msgs %}
                 <div class="carea d-flex justify-content-end mt-1">
                   <div class="chat px-2 bg-success text-light">
-                    Helo
+                    {{i.messege}}
                   </div>
                 </div>
-                <!-- forloop ends -->
-                <div class="carea d-flex justify-content-start mt-1">
+                {% endfor %}
+                <!-- <div class="carea d-flex justify-content-start mt-1">
                   <div class="chat px-2">
                     Hi
                   </div>
@@ -93,7 +93,7 @@
                   <div class="chat px-2">
                     Yeah iam fine ? what about you ??
                   </div>
-                </div>
+                </div> -->
               </div>
               <div class="msgbox col-lg-12 mb-1">
                 <div class="col-lg-12 login-inp mt-1" style="height: 50px; display: flex; justify-content: center;">

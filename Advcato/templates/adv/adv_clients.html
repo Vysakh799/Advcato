@@ -27,23 +27,19 @@
                     <a class="nav-link text-light font-weight-bold " href="javascript:void(0)">Home</a>
                   </li> -->
                   <li class="nav-item">
-                    <a class="nav-link text-light" href="../User_index">Home</a>
+                    <a class="nav-link text-light" href="../Adv_index">Home</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link text-light" href="">Clients</a>
+                    <a class="nav-link text-light" href="../adv_clients">Clients</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link text-light" href="../adv_msg"><i class="fa-regular fa-message"></i>
-                        <div class="notification">
-
-                        </div>
-                    </a>
+                    <a class="nav-link text-light" href="../adv_msg"><i class="fa-regular fa-message"></i></a>
                   </li>
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"><i class="fa-regular fa-user text-light"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end bg-dark" style="overflow: hidden;">
                       <li><a class="dropdown-item bg-dark text-light"  href="#">Profile</a></li>
-                      <li><a class="dropdown-item bg-dark text-light" href="Adv_logout">Logout <i class="fa-solid fa-right-from-bracket"></i> </a></li>
+                      <li><a class="dropdown-item bg-dark text-light" href="User_logout">Logout <i class="fa-solid fa-right-from-bracket"></i> </a></li>
                       <!-- <li><a class="dropdown-item bg-dark text-light" href="#">A third link</a></li> -->
                     </ul>
                   </li>
@@ -54,40 +50,37 @@
           </nav>
           <div class="starting-page row" style="margin: 0px; background-image:linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.7)), url(https://verdicto.co/wp-content/uploads/2024/01/v2-6g780-6u6zq.webp); background-repeat: no-repeat; background-size: cover;">
             <div class="col-lg-12 login-inp mt-1" style="height: 50px; display: flex; justify-content: center;">
-                <input type="text" name="" id="" style="width: 70%; border-radius: 25px; border: 1px solid rgb(20, 19, 19); background-color: rgb(20, 19, 19);" placeholder="Search in chats" class="inp-login px-3">
+                <input type="text" name="" id="" style="width: 70%; border-radius: 25px; border: 1px solid rgb(20, 19, 19); background-color: rgb(20, 19, 19);" placeholder="Search Advocates name or Location" class="inp-login px-3">
                 <i class="fa-solid fa-magnifying-glass text-light" style="position: relative; top: 15px; right: 40px; opacity: 0.3;"></i>
             </div>
             <<div class="col-lg-12 pending-work" style="margin-top: -200px;">
                 <div class="container total">
+                    {% for user in users %}
                     <a href="">
-                      {% for user,count in user_chatcount %}
                       <div class="para adv ">
-                        <a href="../advuser_chat/{{user.pk}}">
+                        <a href="../advuser_profile/{{adv.pk}}">
                       <div class="row">
                         <div class="profile a col-lg-1">
                             <img src="{% static 'images/user-logo.jpg' %}" class="rounded-circle img-fluid" style="height: 50px;" alt="">
                           </div>
                           <div class="name a col-lg-3">
-                            {{user}}
+                            {{user.uname}}
                           </div>
-                          <div class="col-lg-8 d-flex justify-content-end px-5 align-items-center">
-                            <div class="msg_count">
-                              {{count}}
-                            </div>
-                          </div>
-                          <!-- <div class="email a col-lg-3">
+                          <div class="email a col-lg-3">
+                            {{user.uemail}}
                           </div>
                           <div class="contact a col-lg-3">
+                            Ph : {{user.uphone}}
                           </div>
                           <div class="location a col-lg-2 ">
-                            <i class="fa-solid fa-location-dot"></i>
-                          </div> -->
+                            <!-- <i class="fa-solid fa-location-dot"></i> -->
+                            
+                          </div>
                       </div>
-
                         </a>
                     </div>
-                    {% endfor %}
                     </a>
+                    {% endfor %}
                 </div>
             </div>
           </div>

@@ -25,7 +25,7 @@ urlpatterns = [
     path('Advocates',views.Advocates),
     path('advuser_profile/<pk>',views.advuser_profile),
     path('user_msg',views.user_msg),
-    path('useradv_chat/<pk>',views.useradv_chat),
+    path('useradv_chat/<pk>',views.useradv_chat,name='useradv_chat'),
     # path('user_sendmsg/<pk>',views.user_sendmsg),
 
 
@@ -44,5 +44,6 @@ urlpatterns = [
     path('advprof_Deactivate',views.advprof_Deactivate),
     path('Update_prof',views.Update_prof),
     path('adv_msg',views.adv_msg),
-    path('advuser_chat',views.advuser_chat),
+    path('advuser_chat/<pk>',views.advuser_chat),
+    path('adv_clients',views.adv_clients),
 ]
