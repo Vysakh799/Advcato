@@ -34,9 +34,9 @@
                   </li>
                   <li class="nav-item">
                     <a class="nav-link text-light" href="../user_msg"><i class="fa-regular fa-message"></i>
-                        <div class="notification">
+                        <!-- <div class="notification">
 
-                        </div>
+                        </div> -->
                     </a>
                   </li>
                   <li class="nav-item dropdown">
@@ -60,20 +60,25 @@
             <<div class="col-lg-12 pending-work" style="margin-top: -200px;">
                 <div class="container total">
                     <a href="">
+                      {% for adv,count in advchatcount %}
                       <div class="para adv ">
-                        <a href="../useradv_chat">
+                        <a href="../useradv_chat/{{adv.pk}}">
                       <div class="row">
                         <div class="profile a col-lg-1">
                             <img src="{% static 'images/adv-logo.png' %}" class="rounded-circle img-fluid" style="height: 50px;" alt="">
                           </div>
                           <div class="name a col-lg-3">
-                            {{adv.aname}}
-                            Nandhagopal Marar
+                            {{adv}}
+                            <!-- Nandhagopal Marar -->
                           </div>
                           <div class="col-lg-8 d-flex justify-content-end px-5 align-items-center">
+                            {% if count %}
                             <div class="msg_count">
-                              2
+                              {{count}}
                             </div>
+                            {% else %}
+
+                            {% endif %}
                           </div>
                           <!-- <div class="email a col-lg-3">
                           </div>
@@ -85,6 +90,7 @@
                       </div>
                         </a>
                     </div>
+                    {% endfor %}
                     </a>
                 </div>
             </div>

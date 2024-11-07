@@ -233,6 +233,11 @@ input[type='file']{
     background-color: rgba(63, 62, 62, 0.463);
     border-radius: 20px;
 }
+.chat-div ::-webkit-scrollbar {
+    width: 5px;
+  }
+
+
 .send-btn{
     color: white;
     border-radius: 50%;
@@ -251,6 +256,10 @@ input[type='file']{
     width: fit-content;
     padding: 5px;
     border-radius: 20px;
+}
+.chat-area{
+    overflow: scroll;
+    height: 300px;
 }
 /* .advocate{
     position: absolute;

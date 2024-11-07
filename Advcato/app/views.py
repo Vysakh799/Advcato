@@ -117,7 +117,19 @@ def advuser_profile(request,pk):
         return redirect(login)
 def user_msg(request):
     if getuser(request):
-        return render(request,'user/user_msg.html')
+        user=User.objects.get(uname=request.session['user'])
+        advs=Chat.objects.filter(uname=user)
+        anames1=[]
+        for i in advs:
+            anames1.append(i.aname)
+        d_anames=set(anames1)
+        advs=list(d_anames)
+        count=[]
+        for i in advs:
+            data=Chat.objects.filter(aname=i,userread_status=False)
+            count.append(len(data))
+        advchatcount=zip_longest(advs,count)
+        return render(request,'user/user_msg.html',{'advchatcount':advchatcount})
     else:
         return redirect(login)
 
@@ -319,11 +331,11 @@ def adv_msg(request):
             counts=0
             for i in users:
                 data=Chat.objects.filter(uname=i,advread_status=False)
-                print(data)
+                # print(data)
                 count.append(len(data))
-            print(count)    
+            # print(count)    
             userchatcount=zip_longest(users,count)
-            print(userchatcount)
+            # print(userchatcount)
 
             return render(request,'adv/adv_msg.html',{'user_chatcount':userchatcount})
 

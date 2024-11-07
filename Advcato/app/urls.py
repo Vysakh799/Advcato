@@ -44,6 +44,6 @@ urlpatterns = [
     path('advprof_Deactivate',views.advprof_Deactivate),
     path('Update_prof',views.Update_prof),
     path('adv_msg',views.adv_msg),
-    path('advuser_chat/<pk>',views.advuser_chat),
+    path('advuser_chat/<pk>',views.advuser_chat,name='advuser_chat'),
     path('adv_clients',views.adv_clients),
 ]
