@@ -266,3 +266,16 @@ input[type='file']{
     left: 0px;
     color: white;
 } */
+
+.total .client{
+    height: 100px;
+}
+.client_dtls{
+    display: flex;
+    flex-direction: column;
+    /* background-color: red; */
+    align-items: flex-start;
+}
+.client_dtls .user{
+    /* background-color: yellow; */
+}

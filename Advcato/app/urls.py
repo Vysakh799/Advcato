@@ -46,4 +46,5 @@ urlpatterns = [
     path('adv_msg',views.adv_msg),
     path('advuser_chat/<pk>',views.advuser_chat,name='advuser_chat'),
     path('adv_clients',views.adv_clients),
+    path('user_and_caseview/<pk>',views.user_and_caseview),
 ]

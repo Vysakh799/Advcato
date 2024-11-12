@@ -5,6 +5,8 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from itertools import zip_longest
+from django.http import JsonResponse
+
 # Create your views here.
 
 def getuser(request):
@@ -350,3 +352,8 @@ def advuser_chat(request,pk):
             data=Chat.objects.create(uname=user,aname=adv,messege=msg,advread_status=True,advs=True)
             return redirect(reverse('advuser_chat',args=[pk]))
         return render(request,"adv/advuser_chat.html",{'user':user,'msgs':msgs})
+
+def user_and_caseview(request,pk):
+    if 'adv' in request.session:
+        user=User.objects.get(pk=pk)
+        return render(request,'adv/user_and_caseview.html',{"user":user})
