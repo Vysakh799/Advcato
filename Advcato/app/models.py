@@ -70,6 +70,7 @@ class Cases(models.Model):
     case_summery=models.TextField()
     case_subjet=models.TextField()
     completed=models.BooleanField(default=False)
+    case_status=models.BooleanField(default=False)
 
     def __str__(self) :
         return self.case_subjet

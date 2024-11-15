@@ -357,3 +357,11 @@ def user_and_caseview(request,pk):
     if 'adv' in request.session:
         user=User.objects.get(pk=pk)
         return render(request,'adv/user_and_caseview.html',{"user":user})
+    
+
+def adv_defender(request):
+    return render(request,'adv/adv_defender.html')
+
+def adv_addcase(request):
+    return render(request,'adv/adv_addcase.html')
+
