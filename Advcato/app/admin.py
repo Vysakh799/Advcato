@@ -11,5 +11,7 @@ admin.site.register(Selected_lang)
 admin.site.register(Cases)
 admin.site.register(Parties)
 admin.site.register(Chat)
+admin.site.register(Case_types)
+admin.site.register(Court_type)
 
 

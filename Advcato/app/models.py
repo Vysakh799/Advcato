@@ -75,6 +75,20 @@ class Cases(models.Model):
     def __str__(self) :
         return self.case_subjet
 
+class Case_types(models.Model):
+    type=models.TextField(null=True)
+
+
+    def __str__(self):
+        return self.type
+
+class Court_type(models.Model):
+    ctype=models.TextField(null=True)
+
+
+    def __str__(self):
+        return self.ctype
+
 class Parties(models.Model):
     case=models.ForeignKey(Cases,on_delete=models.CASCADE)
     uname=models.ForeignKey(User,on_delete=models.CASCADE)
@@ -93,7 +107,7 @@ class Chat(models.Model):
     advread_status=models.BooleanField(default=False)
     userread_status=models.BooleanField(default=False)
     advs=models.BooleanField(default=False)
-
+    
 
     
 
