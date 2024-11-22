@@ -299,7 +299,7 @@ input[type='file']{
 .pending-work .case_adv{
     /* background-color: red; */
     margin-top:0px;
-    height:600px;
+    /* height:600px; */
     overflow-y: auto;
 }
 .case .plus_icon{

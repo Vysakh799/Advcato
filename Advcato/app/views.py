@@ -364,6 +364,16 @@ def user_and_caseview(request,pk):
 
 def adv_addcase(request):
     if 'adv' in request.session:
-        
+        if request.method=='POST':
+            case_subject=request.POST['case_subject']
+            case_summery=request.POST['case_summery']
+            first_hearing=request.POST['first_hearing']
+            court_name=request.POST['cout_name']
+            judge_name=request.POST['judge_name']
+            dname=request.POST['dname']
+            demail=request.POST['demail']
+            dphno=request.POST['dphno']
+            daddress=request.POST['daddress']
+            print(case_subject,case_summery,first_hearing,court_name,)
         return render(request,'adv/adv_addcase.html')
 

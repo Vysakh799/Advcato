@@ -61,7 +61,67 @@
                   <input type="text" name="" id="" style="width: 70%; border-radius: 25px; border: 1px solid rgb(20, 19, 19); background-color: rgb(20, 19, 19);" placeholder="Search in chats" class="inp-login px-3">
                   <i class="fa-solid fa-magnifying-glass text-light" style="position: relative; top: 15px; right: 40px; opacity: 0.3;"></i>
                 </div>
-                <div class="para mt-3" style="width: 70%; height: 500px;">kbxfgsd</div>
+                <div class="para mt-3" style="width: 70%; height: 500px;">
+                  <form action="" method="POST">
+                    {% csrf_token %}
+                  <div class="row">
+                    <div class="col-lg-4">
+                      <div class="row g-4">
+                        <div class="col-lg-12 d-flex justify-content-center">
+                      <h5>Case Details</h5>
+
+                        </div>
+                        <div class="col-lg-12">
+                          <input type="text" name="case_subject" placeholder="Case Subject" id="" class="form-control" required>
+                        </div>
+                        <div class="col-lg-12">
+                          <textarea name="case_summery" id="" class="form-control" placeholder="Case Summery" required></textarea>
+                        </div>
+                        <div class="col-lg-12">
+                          <label for="date" style="font-size: 17px;">First hearing</label>
+                          <input type="date" name="first_hearing" class="form-control " id="date" required>
+                        </div>
+                      
+                      </div>
+                    </div>
+                    <div class="col-lg-4 d-flex justify-content-center" style="border-left: 1px solid white">
+                      <div class="row">
+                        <div class="col-lg-12 d-flex justify-content-center">
+                          <h5>Court Details</h5>
+                        </div>
+                        <div class="col-lg-12">
+                          <input type="text" name="court_name" id="" placeholder="Court Name" class="form-control" required>
+                        </div>
+                        <div class="col-lg-12">
+                          <input type="text" name="judge_name" id="" placeholder="Judge" class="form-control" required>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 d-flex justify-content-center" style="border-left: 1px solid white">
+                      <div class="row">
+                        <div class="col-lg-12 d-flex justify-content-center">
+                          <h5>Defender Details</h5>
+                        </div>
+                        <div class="col-lg-12">
+                          <input type="text" name="dname" id="" placeholder="Name" class="form-control" required>
+                        </div>
+                        <div class="col-lg-12">
+                          <input type="email" name="demail" id="" placeholder="Email" class="form-control p-2" required>
+                        </div>
+                        <div class="col-lg-12">
+                          <input type="text" name="dphno" id="" placeholder="Phone Number" class="form-control" required>
+                        </div>
+                        <div class="col-lg-12">
+                          <textarea name="daddress" id="" placeholder="Address" class="form-control" required></textarea>
+                        </div>
+                      </div>
+                    </div> 
+                    <div class="col-lg-12">
+                      <button type="submit" class="btn btn-success w-100 mt-3">Add Case</button>
+                    </div>
+                  </div>
+                  </form>
+                </div>
             </div> 
             
           </div>
