@@ -308,3 +308,7 @@ input[type='file']{
 .case .plus_area{
     height: 180px;
 }
+
+.starting-page .row .add_case{
+    width: 80%;
+}
