@@ -78,6 +78,13 @@
                           <textarea name="case_summery" id="" class="form-control" placeholder="Case Summery" required></textarea>
                         </div>
                         <div class="col-lg-12">
+                          <select name="case_type" id="" class="form-control" style="height: 45px;"> 
+                            <option disabled selected>--Select case type--</option>
+                            <option value="Criminal">Criminal</option>
+                            <option value="Offensive">Offensive</option>
+                          </select>
+                        </div>
+                        <div class="col-lg-12">
                           <label for="date" style="font-size: 17px;">First hearing</label>
                           <input type="date" name="first_hearing" class="form-control " id="date" required>
                         </div>
@@ -91,6 +98,13 @@
                         </div>
                         <div class="col-lg-12">
                           <input type="text" name="court_name" id="" placeholder="Court Name" class="form-control" required>
+                        </div>
+                        <div class="col-lg-12">
+                          <select name="court_type" id="" class="form-control" style="height: 45px;"> 
+                            <option disabled selected>--Select court type--</option>
+                            <option value="SC">SC</option>
+                            <option value="HC">HC</option>
+                          </select>
                         </div>
                         <div class="col-lg-12">
                           <input type="text" name="judge_name" id="" placeholder="Judge" class="form-control" required>

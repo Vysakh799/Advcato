@@ -59,9 +59,23 @@ class Selected_parea(models.Model):
 
     def __str__(self) :
         return self.aname.aname
+    
+class Case_types(models.Model):
+    type=models.TextField(null=True)
+    status=models.BooleanField(default=True)
+    def __str__(self):
+        return self.type
+
+class Court_type(models.Model):
+    ctype=models.TextField(null=True)
+    status=models.BooleanField(default=True)
+    def __str__(self):
+        return self.ctype
 
 class Cases(models.Model):
     aname=models.ForeignKey(Advocate,on_delete=models.CASCADE)
+    casetype=models.ForeignKey(Case_types,on_delete=models.CASCADE)
+    courttype=models.ForeignKey(Court_type,on_delete=models.CASCADE)
     casenumber=models.IntegerField()
     court=models.TextField()
     judge=models.TextField()
@@ -75,19 +89,7 @@ class Cases(models.Model):
     def __str__(self) :
         return self.case_subjet
 
-class Case_types(models.Model):
-    type=models.TextField(null=True)
 
-
-    def __str__(self):
-        return self.type
-
-class Court_type(models.Model):
-    ctype=models.TextField(null=True)
-
-
-    def __str__(self):
-        return self.ctype
 
 class Parties(models.Model):
     case=models.ForeignKey(Cases,on_delete=models.CASCADE)
