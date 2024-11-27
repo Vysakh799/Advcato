@@ -6,6 +6,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from itertools import zip_longest
 from django.http import JsonResponse
+import datetime
 
 # Create your views here.
 
@@ -365,15 +366,24 @@ def user_and_caseview(request,pk):
 def adv_addcase(request):
     if 'adv' in request.session:
         if request.method=='POST':
+            serial_no=request.POST['sno']
             case_subject=request.POST['case_subject']
             case_summery=request.POST['case_summery']
+            case_type=request.POST['case_type']
             first_hearing=request.POST['first_hearing']
-            court_name=request.POST['cout_name']
+            court_name=request.POST['court_name']
+            court_type=request.POST['court_type']
             judge_name=request.POST['judge_name']
             dname=request.POST['dname']
             demail=request.POST['demail']
             dphno=request.POST['dphno']
             daddress=request.POST['daddress']
-            print(case_subject,case_summery,first_hearing,court_name,)
+            x=datetime.datetime.now()
+            year=x.strftime("%Y")
+            case_number=str(year)+"/"+court_type+"/"+case_type+"/"+str(serial_no)
+            adv=Advocate.objects.get(aname=request.session['adv'])
+            
+            
+            # print(case_subject,case_summery,first_hearing,court_name,case_type,court_type,judge_name,dname,demail,daddress,dphno,serial_no)
         return render(request,'adv/adv_addcase.html')
 

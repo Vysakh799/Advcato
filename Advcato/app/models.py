@@ -74,6 +74,7 @@ class Court_type(models.Model):
 
 class Cases(models.Model):
     aname=models.ForeignKey(Advocate,on_delete=models.CASCADE)
+    uname=models.ForeignKey(User,on_delete=models.CASCADE)
     casetype=models.ForeignKey(Case_types,on_delete=models.CASCADE)
     courttype=models.ForeignKey(Court_type,on_delete=models.CASCADE)
     casenumber=models.IntegerField()

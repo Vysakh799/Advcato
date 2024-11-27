@@ -62,7 +62,7 @@
                   <i class="fa-solid fa-magnifying-glass text-light" style="position: relative; top: 15px; right: 40px; opacity: 0.3;"></i>
                 </div>
                 <div class="para mt-3" style="width: 70%; height: 500px;">
-                  <form action="" method="POST">
+                  <form action="../adv_addcase" method="POST">
                     {% csrf_token %}
                   <div class="row">
                     <div class="col-lg-4">
@@ -70,6 +70,9 @@
                         <div class="col-lg-12 d-flex justify-content-center">
                       <h5>Case Details</h5>
 
+                        </div>
+                        <div class="col-lg-12">
+                          <input type="text" name="sno" placeholder="Serial No." class="form-control" id="" required>
                         </div>
                         <div class="col-lg-12">
                           <input type="text" name="case_subject" placeholder="Case Subject" id="" class="form-control" required>
