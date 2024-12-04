@@ -48,4 +48,6 @@ urlpatterns = [
     path('adv_clients',views.adv_clients),
     path('user_and_caseview/<pk>',views.user_and_caseview),
     path('adv_addcase',views.adv_addcase),
+    path('update_case/<pk>',views.update_case),
+
 ]

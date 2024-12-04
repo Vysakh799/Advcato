@@ -361,7 +361,14 @@ def user_and_caseview(request,pk):
         user=User.objects.get(pk=pk)
         if 'client' not in request.session:
             request.session['client']=user.uname
-        cases=Cases.objects.filter(uname=user)
+        adv=Advocate.objects.get(aname=request.session['adv'])
+        defenders=Parties.objects.filter(uname=user)
+        cases=[]
+        print(defenders)
+        for i in defenders:
+            if i.case.aname==adv:
+                cases.append(i)
+        print(cases)
         # defeneder=Parties.objects.filter(case=cases)
         return render(request,'adv/user_and_caseview.html',{"user":user,'cases':cases})
     
@@ -411,4 +418,26 @@ def adv_addcase(request):
             return redirect(reverse(user_and_caseview,args=[user.pk]))
             # print(case_subject,case_summery,first_hearing,court_name,case_type,court_type,judge_name,dname,demail,daddress,dphno,serial_no)
         return render(request,'adv/adv_addcase.html',{'case_types':case_types,'court_types':court_types})
+    
+def update_case(request,pk):
+    if 'adv' in request.session:
+        cases=Parties.objects.get(pk=pk)
+        if request.method=='POST':
+            court_name=request.POST['court_name']
+            next_hearing=request.POST['next_hearing']
+            judge=request.POST['judge_name']
+            if next_hearing:
+                case_pk=cases.case.pk
+                Cases.objects.filter(pk=case_pk).update(court=court_name,next_hearing=next_hearing,judge=judge)
+                print("Done")
+            else:
+                case_pk=cases.case.pk
+                Cases.objects.filter(pk=case_pk).update(court=court_name,judge=judge)
+                print("Done")
+            return redirect(reverse(user_and_caseview,args=[cases.uname.pk]))
+            
+    return render(request,'adv/update_case.html',{'cases':cases})
 
+
+# def endcase(request):
+    

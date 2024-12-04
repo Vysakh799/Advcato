@@ -61,7 +61,7 @@
               
             </div>
           </nav>
-          <div class="starting-page row" style="margin: 0px; background-image:linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.7)), url(https://verdicto.co/wp-content/uploads/2024/01/v2-6g780-6u6zq.webp); background-repeat: no-repeat; background-size: cover;">
+          <div class="starting-page row h-100" style="margin: 0px; background-image:linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.7)), url(https://verdicto.co/wp-content/uploads/2024/01/v2-6g780-6u6zq.webp); background-repeat: repeat-y; background-size: cover;">
             <div class="col-lg-12 login-inp mt-1" style="height: 50px; display: flex; justify-content: center;">
                 <input type="text" name="" id="" style="width: 70%; border-radius: 25px; border: 1px solid rgb(20, 19, 19); background-color: rgb(20, 19, 19);" placeholder="Search in chats" class="inp-login px-3">
                 <i class="fa-solid fa-magnifying-glass text-light" style="position: relative; top: 15px; right: 40px; opacity: 0.3;"></i>
@@ -70,7 +70,7 @@
                 <div class="container total case_adv">
                     <a href="">
                       
-                      <div class="para adv client">
+                      <div class="para adv client mt-3">
                         <a href="../advuser_chat/{{user.pk}}">
                       <div class="row">
                         <div class="profile a col-lg-1">
@@ -109,48 +109,48 @@
                     
                     </a>
                     {% for i in cases %}
-                    <div class="cases d-flex justify-content-center ">
+                    <div class="cases d-flex justify-content-center mt-1">
                       <div class="para adv case case1 w-85 p-4">
                         <div class="details">
                             <div class="row g-3">
                               <div class="col-lg-12 d-flex justify-content-center " style="font-size: 18px; font-weight: 700;">
-                                Case no : {{i.casenumber}}
+                                Case no : {{i.case.casenumber}}
                               </div>
                               <div class="col-lg-8">
                                 <div class="row">
                                   <div class="col-lg-12 d-flex justify-content-center" style="text-decoration: underline; font-size: 18px;">Case Details </div>
                                   <div class="col-lg-4 p-2">
-                                    <span class="span">Court :</span> {{i.court}}
+                                    <span class="span">Court :</span> {{i.case.court}}
                                   </div>
                                   <div class="col-lg-4 p-2">
-                                    <span class="span">Judge :</span> {{i.judge}}
+                                    <span class="span">Judge :</span> {{i.case.judge}}
                                   </div>
                                   <div class="col-lg-4 p-2">
-                                    <span class="span">Case Subject :</span> {{i.case_subject}}
+                                    <span class="span">Case Subject :</span> {{i.case.case_subject}}
                                   </div>
                                   <div class="col-lg-6 p-2 d-flex justify-content-center">
-                                    <span class="span">Reg_date :</span> {{i.reg_date}}
+                                    <span class="span">Reg_date :</span> {{i.case.reg_date}}
                                   </div>
-                                  <div class="col-lg-6 p-2 d-flex justify-content-center"><span class="span">Next Hearing :</span> {{i.next_hearing}}</div>
+                                  <div class="col-lg-6 p-2 d-flex justify-content-center"><span class="span">Next Hearing :</span> {{i.case.next_hearing}}</div>
                                   <div class="col-lg-12 p-2">
-                                    <span class="span">Case Summery :</span> {{i.case_summery}}
+                                    <span class="span">Case Summery :</span> {{i.case.case_summery}}
                                   </div>
                                 </div>
                               </div>
                               <div class="col-lg-4" style="border-left: 1px solid white; padding-left: 20px;">
                                 <div class="row">
                                   <div class="col-lg-12 d-flex justify-content-center" style="text-decoration: underline; font-size: 18px;">Defender Details </div>
-                                  <div class="col-lg-12"><span class="span">Name :</span> Pavithran</div>
-                                  <div class="col-lg-12"><span class="span">Address :</span> Kallampurakkal house</div>
-                                  <div class="col-lg-12"><span class="span">Phone :</span> 7890876545</div>
-                                  <div class="col-lg-12"><span class="span">Email :</span> pavithru@gmail.com</div>
+                                  <div class="col-lg-12"><span class="span">Name :</span> {{i.dname}}</div>
+                                  <div class="col-lg-12"><span class="span">Address :</span> {{i.daddress}}</div>
+                                  <div class="col-lg-12"><span class="span">Phone :</span> {{i.dphno}}</div>
+                                  <div class="col-lg-12"><span class="span">Email :</span> {{i.demail}}</div>
                                 </div>
                               </div>
                           
                         </div>
                       
                         <div class="col-lg-12 d-flex justify-content-end">
-                          <a href="../adv_defender" class="btn btn-success mx-1">Update Case</a>
+                          <a href="../update_case/{{i.pk}}" class="btn btn-success mx-1">Update Case</a>
                           <a href="" class="btn btn-danger">End Case</a>
                           
                         </div>
