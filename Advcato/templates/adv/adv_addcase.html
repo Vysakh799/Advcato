@@ -83,15 +83,15 @@
                         <div class="col-lg-12">
                           <select name="case_type" id="" class="form-control" style="height: 45px;"> 
                             <option disabled selected>--Select case type--</option>
-                            <option value="Criminal">Criminal</option>
-                            <option value="Offensive">Offensive</option>
+                            {% for i in case_types %}
+                            <option value="{{i.type}}">{{i.type}}</option>
+                            {% endfor %}
                           </select>
                         </div>
                         <div class="col-lg-12">
                           <label for="date" style="font-size: 17px;">First hearing</label>
                           <input type="date" name="first_hearing" class="form-control " id="date" required>
                         </div>
-                      
                       </div>
                     </div>
                     <div class="col-lg-4 d-flex justify-content-center" style="border-left: 1px solid white">
@@ -105,8 +105,9 @@
                         <div class="col-lg-12">
                           <select name="court_type" id="" class="form-control" style="height: 45px;"> 
                             <option disabled selected>--Select court type--</option>
-                            <option value="SC">SC</option>
-                            <option value="HC">HC</option>
+                            {% for i in court_types %}
+                            <option value="{{i.ctype}}">{{i.ctype}}</option>
+                            {% endfor %}
                           </select>
                         </div>
                         <div class="col-lg-12">

@@ -108,32 +108,32 @@
                     </div>
                     
                     </a>
+                    {% for i in cases %}
                     <div class="cases d-flex justify-content-center ">
                       <div class="para adv case case1 w-85 p-4">
                         <div class="details">
-                
                             <div class="row g-3">
                               <div class="col-lg-12 d-flex justify-content-center " style="font-size: 18px; font-weight: 700;">
-                                Case no : 2024/HC/CRIMINAL/3089
+                                Case no : {{i.casenumber}}
                               </div>
                               <div class="col-lg-8">
                                 <div class="row">
                                   <div class="col-lg-12 d-flex justify-content-center" style="text-decoration: underline; font-size: 18px;">Case Details </div>
                                   <div class="col-lg-4 p-2">
-                                    <span class="span">Court :</span> Calicut High court
+                                    <span class="span">Court :</span> {{i.court}}
                                   </div>
                                   <div class="col-lg-4 p-2">
-                                    <span class="span">Judge :</span> Verrendra babu
+                                    <span class="span">Judge :</span> {{i.judge}}
                                   </div>
                                   <div class="col-lg-4 p-2">
-                                    <span class="span">Case Subject :</span> Pavitran Case
+                                    <span class="span">Case Subject :</span> {{i.case_subject}}
                                   </div>
                                   <div class="col-lg-6 p-2 d-flex justify-content-center">
-                                    <span class="span">Reg_date :</span> 5/02/2024
+                                    <span class="span">Reg_date :</span> {{i.reg_date}}
                                   </div>
-                                  <div class="col-lg-6 p-2 d-flex justify-content-center"><span class="span">Next Hearing :</span> 4/12/2024</div>
+                                  <div class="col-lg-6 p-2 d-flex justify-content-center"><span class="span">Next Hearing :</span> {{i.next_hearing}}</div>
                                   <div class="col-lg-12 p-2">
-                                    <span class="span">Case Summery :</span> Pavitran Killed a girl and make it like Indhuchoodans Daddy did it 
+                                    <span class="span">Case Summery :</span> {{i.case_summery}}
                                   </div>
                                 </div>
                               </div>
@@ -160,6 +160,7 @@
                       
                     </div>
                     </div>
+                    {% endfor %}
                     <div class="para adv case">
                       <a href="../adv_addcase">
                     <div class="row g-5">

@@ -310,6 +310,8 @@ def Update_prof(request):
 
 def adv_clients(request):
     if 'adv' in request.session:
+        if 'client' in request.session:
+            del request.session['client']
         adv=Advocate.objects.get(aname=request.session['adv'])
         users1=Chat.objects.filter(aname=adv)
         usernames=[]
@@ -357,33 +359,56 @@ def advuser_chat(request,pk):
 def user_and_caseview(request,pk):
     if 'adv' in request.session:
         user=User.objects.get(pk=pk)
-        return render(request,'adv/user_and_caseview.html',{"user":user})
+        if 'client' not in request.session:
+            request.session['client']=user.uname
+        cases=Cases.objects.filter(uname=user)
+        # defeneder=Parties.objects.filter(case=cases)
+        return render(request,'adv/user_and_caseview.html',{"user":user,'cases':cases})
     
 
 # def adv_defender(request):
 #     return render(request,'adv/adv_defender.html')
 
 def adv_addcase(request):
+    user=User.objects.get(uname=request.session['client'])
+    case_types=Case_types.objects.all()
+    court_types=Court_type.objects.all()
     if 'adv' in request.session:
         if request.method=='POST':
             serial_no=request.POST['sno']
             case_subject=request.POST['case_subject']
             case_summery=request.POST['case_summery']
-            case_type=request.POST['case_type']
+            ct=request.POST['case_type']
+            # print(ct)
+            case_type=Case_types.objects.get(type=ct)
             first_hearing=request.POST['first_hearing']
             court_name=request.POST['court_name']
-            court_type=request.POST['court_type']
+            crt=request.POST['court_type']
+            court_type=Court_type.objects.get(ctype=crt)
             judge_name=request.POST['judge_name']
-            dname=request.POST['dname']
+            dname=request.POST['dname']     
             demail=request.POST['demail']
             dphno=request.POST['dphno']
             daddress=request.POST['daddress']
             x=datetime.datetime.now()
             year=x.strftime("%Y")
-            case_number=str(year)+"/"+court_type+"/"+case_type+"/"+str(serial_no)
+            x=datetime.datetime.now()
+            date=(x.strftime("%x"))
+            date_string = date
+            parts = date_string.split("/")
+            year = "20" + parts[2]
+            formatted_date = f"{year}-{parts[0]}-{parts[1]}"
+            date_obj = datetime.datetime.strptime(formatted_date, "%Y-%m-%d")
+            reg_date=date_obj.date()
+            case_number=str(year)+"/"+crt+"/"+ct+"/"+str(serial_no)
             adv=Advocate.objects.get(aname=request.session['adv'])
-            
-            
+            data=Cases.objects.create(aname=adv,uname=user,casetype=case_type,courttype=court_type,casenumber=case_number,court=court_name,judge=judge_name,reg_date=reg_date,next_hearing=first_hearing,case_summery=case_summery,case_subject=case_subject,case_status=True)
+            data.save()
+            case=Cases.objects.get(pk=data.pk)
+            data1=Parties.objects.create(case=case,uname=user,dname=dname,daddress=daddress,dphno=dphno,demail=demail)
+            data1.save()
+            # print(user.pk)
+            return redirect(reverse(user_and_caseview,args=[user.pk]))
             # print(case_subject,case_summery,first_hearing,court_name,case_type,court_type,judge_name,dname,demail,daddress,dphno,serial_no)
-        return render(request,'adv/adv_addcase.html')
+        return render(request,'adv/adv_addcase.html',{'case_types':case_types,'court_types':court_types})
 
