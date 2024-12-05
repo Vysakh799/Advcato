@@ -36,23 +36,19 @@
                     <a class="nav-link text-light" href="../User_index">Home</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link text-light" href="">Clients</a>
+                    <a class="nav-link text-light" href="../Advocates">Advocates</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link text-light" href="">Cases</a>
+                    <a class="nav-link text-light" href="../user_caseview">Cases</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link text-light" href="../adv_msg"><i class="fa-regular fa-message"></i>
-                        <!-- <div class="notification">
-
-                        </div> -->
-                    </a>
+                    <a class="nav-link text-light" href="../user_msg"><i class="fa-regular fa-message"></i></a>
                   </li>
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"><i class="fa-regular fa-user text-light"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end bg-dark" style="overflow: hidden;">
                       <li><a class="dropdown-item bg-dark text-light"  href="#">Profile</a></li>
-                      <li><a class="dropdown-item bg-dark text-light" href="Adv_logout">Logout <i class="fa-solid fa-right-from-bracket"></i> </a></li>
+                      <li><a class="dropdown-item bg-dark text-light" href="User_logout">Logout <i class="fa-solid fa-right-from-bracket"></i> </a></li>
                       <!-- <li><a class="dropdown-item bg-dark text-light" href="#">A third link</a></li> -->
                     </ul>
                   </li>
@@ -70,62 +66,38 @@
                 <div class="container total case_adv">
                     <a href="">
                       
-                      <div class="para adv client mt-3">
-                        <a href="../advuser_chat/{{user.pk}}">
-                      <div class="row">
-                        <div class="profile a col-lg-1">
-                            <img src="{% static 'images/user-logo.jpg' %}" class="rounded-circle img-fluid" style="height: 50px;" alt="">
-                          </div>
-                          <div class="name a col-lg-3 client_dtls">
-                            <div class="user">
-                                {{user.uname}}
-                            </div>
-                            <div class="phone">
-                                ph : {{user.uphone}}
-                            </div>
-                            <div class="email">
-                                {{user.uemail}}
-                            </div>
-                          </div>
-                          <div class="col-lg-8 d-flex justify-content-end px-5 align-items-center">
-                            {% if count %}
-                            <div class="msg_count">
-                              {{count}}
-                            </div>
-                            {% else %}
-                            {% endif %}
-                          </div>
-                          <!-- <div class="email a col-lg-3">
-                          </div>
-                          <div class="contact a col-lg-3">
-                          </div>
-                          <div class="location a col-lg-2 ">
-                            <i class="fa-solid fa-location-dot"></i>
-                          </div> -->
-                      </div>
+                      <!-- <div class="para adv client mt-3"> -->
 
-                        </a>
-                    </div>
+                      
                     
                     </a>
                     {% for i in cases %}
-                    <div class="cases d-flex justify-content-center mt-1">
+                    <div class="cases d-flex justify-content-center mt-3">
                       <div class="para adv case case1 w-85 p-4">
                         <div class="details">
                             <div class="row g-3">
                               <div class="col-lg-12 d-flex justify-content-center " style="font-size: 18px; font-weight: 700;">
                                 Case no : {{i.case.casenumber}}
                               </div>
-                              <div class="col-lg-8">
+                              <!-- <div class="col-lg-3">
+                                <div class="row g-3">
+                                    <div class="col-lg-12 d-flex justify-content-center" style="text-decoration: underline; font-size: 18px;">Client Details </div>
+                                    <div class="col-lg-12"><span class="span">Name :</span> {{i.uname.uname}}</div>
+                                    <div class="col-lg-12"><span class="span">Address :</span> {{i.uname.uaddress}}</div>
+                                    <div class="col-lg-12"><span class="span">Phone :</span> {{i.uname.uphone}}</div>
+                                    <div class="col-lg-12"><span class="span">Email :</span> {{i.uname.uemail}}</div>
+                                  </div>
+                              </div> -->
+                              <div class="col-lg-8" >
                                 <div class="row">
                                   <div class="col-lg-12 d-flex justify-content-center" style="text-decoration: underline; font-size: 18px;">Case Details </div>
-                                  <div class="col-lg-4 p-2">
+                                  <div class="col-lg-6 p-2">
                                     <span class="span">Court :</span> {{i.case.court}}
                                   </div>
-                                  <div class="col-lg-4 p-2">
+                                  <div class="col-lg-6 p-2">
                                     <span class="span">Judge :</span> {{i.case.judge}}
                                   </div>
-                                  <div class="col-lg-4 p-2">
+                                  <div class="col-lg-12 p-2">
                                     <span class="span">Case Subject :</span> {{i.case.case_subject}}
                                   </div>
                                   <div class="col-lg-6 p-2 d-flex justify-content-center">
@@ -138,7 +110,7 @@
                                 </div>
                               </div>
                               <div class="col-lg-4" style="border-left: 1px solid white; padding-left: 20px;">
-                                <div class="row">
+                                <div class="row g-3">
                                   <div class="col-lg-12 d-flex justify-content-center" style="text-decoration: underline; font-size: 18px;">Defender Details </div>
                                   <div class="col-lg-12"><span class="span">Name :</span> {{i.dname}}</div>
                                   <div class="col-lg-12"><span class="span">Address :</span> {{i.daddress}}</div>
@@ -151,11 +123,11 @@
                       
                         <div class="col-lg-12 d-flex justify-content-end">
                           {% if i.case.completed is False %}
-                          <a href="../update_case/{{i.pk}}" class="btn btn-success mx-1">Update Case</a>
-                          <a href="../endcase/{{i.pk}}" class="btn btn-danger" onclick="return confirm('Are you sure want to end this case ?')">End Case</a>
+                          <!-- <a href="../update_case/{{i.pk}}" class="btn btn-success mx-1">Update Case</a>
+                          <a href="../endcase/{{i.pk}}" class="btn btn-danger" onclick="return confirm('Are you sure want to end this case ?')">End Case</a> -->
                           {% else %}
-                          <a href="../reopencase/{{i.pk}}" class="btn btn-primary mx-1" onclick="return confirm('Are you sure want to reopen the case ?')">Reopen</a>
-                          <a href="../endcase/{{i.pk}}" class="btn btn-success disabled">Finished</a>
+                          <!-- <a href="../reopencase/{{i.pk}}" class="btn btn-primary mx-1" onclick="return confirm('Are you sure want to reopen the case ?')">Reopen</a> -->
+                          <a href="#" class="btn btn-success disabled">Finished</a>
                           {% endif %}
                           
                         </div>
@@ -166,7 +138,7 @@
                     </div>
                     </div>
                     {% endfor %}
-                    <div class="para adv case">
+                    <!-- <div class="para adv case">
                       <a href="../adv_addcase">
                     <div class="row g-5">
                       <div class="col-lg-12 d-flex justify-content-center plus_area align-items-center">
@@ -176,7 +148,7 @@
                     </div>
 
                       </a>
-                  </div>
+                  </div> -->
                   
                 </div>
             </div>

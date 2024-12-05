@@ -151,10 +151,29 @@ def useradv_chat(request,pk):
         return render(request,"user/useradv_chat.html",{"adv":adv,"msgs":msgs})
     else:
         return redirect(login)
-# def user_sendmsg(request,pk):
-#     adv=Advocate.objects.get(pk=pk)
-   
-#     return redirect(useradv_chat)
+
+def user_caseview(request):
+    if getuser(request):
+        user=User.objects.get(uname=request.session['user'])
+        cases=Parties.objects.filter(uname=user)
+        return render(request,'user/user_caseview.html',{'cases':cases})
+
+def user_profile(request):
+    if 'user' in request.session:
+        user=User.objects.get(uname=request.session['user'])
+        return render(request,'user/user_profile.html',{'user':user})
+
+def update_userprofile(request):
+    if 'user' in request.session:
+        user=User.objects.get(uname=request.session['user'])
+        if request.method=='POST':
+            email=request.POST['email']
+            phno=request.POST['phno']
+            address=request.POST['address']
+            User.objects.filter(uname=request.session['user']).update(uemail=email,uphone=phno,uaddress=address)
+            return redirect(user_profile)
+        return render(request,'user/update_userprofile.html',{'user':user})
+
 
 #Advocates
 def Adv_reg(request):
@@ -232,8 +251,21 @@ def Adv_index(request):
     if 'adv' in request.session:
         aname=request.session['adv']
         adv=Advocate.objects.get(aname=aname)
+        cases=[]
         if adv.status:
-            return render(request,'adv/adv_index.html',{'adv':adv})
+            cs=Cases.objects.filter(aname=adv)
+            x=datetime.datetime.now()
+            date=(x.strftime("%x"))
+            date_string = date
+            parts = date_string.split("/")
+            year = "20" + parts[2]
+            formatted_date = f"{year}-{parts[0]}-{parts[1]}"
+            date_obj = datetime.datetime.strptime(formatted_date, "%Y-%m-%d")
+            today=date_obj.date()
+            for i in cs:
+                if i.next_hearing>=today:
+                    cases.append(i)
+            return render(request,'adv/adv_index.html',{'adv':adv,'cases':cases})
         else:
             return redirect(Adv_reg_form)
     else:
@@ -364,11 +396,11 @@ def user_and_caseview(request,pk):
         adv=Advocate.objects.get(aname=request.session['adv'])
         defenders=Parties.objects.filter(uname=user)
         cases=[]
-        print(defenders)
+        # print(defenders)
         for i in defenders:
             if i.case.aname==adv:
                 cases.append(i)
-        print(cases)
+        # print(cases)
         # defeneder=Parties.objects.filter(case=cases)
         return render(request,'adv/user_and_caseview.html',{"user":user,'cases':cases})
     
@@ -439,5 +471,33 @@ def update_case(request,pk):
     return render(request,'adv/update_case.html',{'cases':cases})
 
 
-# def endcase(request):
+def endcase(request,pk):
+    if 'adv' in request.session:
+        # print('helo')
+        if 'client' in request.session:
+            user=User.objects.get(uname=request.session['client'])
+            cases=Parties.objects.get(pk=pk)
+            case_pk=cases.case.pk
+            Cases.objects.filter(pk=case_pk).update(completed=True)
+        return redirect(reverse(user_and_caseview,args=[user.pk]))
     
+def reopencase(request,pk):
+    if 'adv' in request.session:
+        # print('helo')
+        if 'client' in request.session:
+            user=User.objects.get(uname=request.session['client'])
+            cases=Parties.objects.get(pk=pk)
+            case_pk=cases.case.pk
+            Cases.objects.filter(pk=case_pk).update(completed=False)
+        return redirect(reverse(user_and_caseview,args=[user.pk]))
+    
+def case_view(request):
+    if 'adv' in request.session:
+        adv=Advocate.objects.get(aname=request.session['adv'])
+        defenders=Parties.objects.all()
+        cases=[]
+        # print(defenders)
+        for i in defenders:
+            if i.case.aname==adv:
+                cases.append(i)
+        return render(request,'adv/case_view.html',{'cases':cases})

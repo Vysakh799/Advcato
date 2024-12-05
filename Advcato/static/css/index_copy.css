@@ -15,9 +15,13 @@ body{
     font-size: 18px;
 }
 .starting-page{
-    height: 88.3vh;
+    height: 88.2vh;
+    overflow-y: scroll;
     background-color: rgb(0, 0, 0);
 
+}
+.starting-page .total{
+    overflow: scroll;
 }
 .editing_home{
     height: 122vh;

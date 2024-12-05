@@ -53,44 +53,31 @@
       </nav>
           <div class="starting-page" >
             <div class="row justify-content-center b-grid align-items-center" style="margin: 0;">
-                    <div class="pro_container col-lg-6 h-75">
-                        <div class="row">
-                            <div class="profile_image col-lg-12 d-flex justify-content-center align-items-center">
-                                <img src="{% static 'images/adv-logo.png' %}" class="rounded-circle img-fluid" style="height: 120px; width: 120px;" alt="">
-                                <p>{{adv.aname}}</p>
-                                <span style="color: rgb(124, 123, 123); margin-top: -20px; letter-spacing: 5px;">{{adv.bcr_no}}</span>
+                    <div class="pro_container col-lg-6 h-75 d-flex justify-content-center">
+                        <div class="col-lg-6">
+                            <form action="../update_userprofile" method="POST">
+                            <div class="row g-4">
+                              
+                                {% csrf_token %}
+                                <div class="col-lg-12 ">
+                                    <label for="email" style="font-size: 17px;" class="mt-4">Email</label>
+                                    <input type="email" name="email" placeholder="Email" class="form-control" id="" required value="{{user.uemail}}">
+                                  </div>
+                                  <div class="col-lg-12">
+                                    <label for="phno" style="font-size: 17px;">Phone Number</label>
+                                    <input type="text" name="phno" placeholder="Phone Number" id="" class="form-control" required value="{{user.uphone}}">
+                                  </div>
+                                  <div class="col-lg-12">
+                                    <label for="address" style="font-size: 17px;">Address</label>
+                                    <textarea name="address" id="" class="form-control" placeholder="Address" required >{{user.uaddress}}</textarea>
+                                  </div>
+                                  <div class="col-lg-12">
+                                    <button type="submit" class="btn btn-success w-100">Update</button>
+                                  </div>
+                              
+                              
                             </div>
-                            <div class="col-lg-6 px-5">
-                                <p><span style="color: rgb(86, 83, 83);">Email: </span>{{adv.aemail}}</p>
-                            </div>
-                            <div class="location a col-lg-6 px-5 ">
-                                <p><span style="color: rgb(86, 83, 83);">Phno: </span>{{adv.aphone}}</p>
-                            </div>
-                            <div class="col-lg-6 px-5">
-                                <p><span style="color: rgb(86, 83, 83);">Heighst Qual: </span>{{adv.aheighest_qual}}</p>
-                            </div>
-                            <div class="location a col-lg-6 px-5">
-                                <p><i class="fa-solid fa-location-dot"></i>
-                                    &nbsp;{{adv.amjtown}}</p>
-                            </div>
-                            <div class="col-lg-6 px-5">
-                                <p><i class="fa-regular fa-clock"></i> {{adv.start_time}} - {{adv.end_time}}</p>
-                                <p><span style="color: rgb(86, 83, 83);">Offday: </span>{{adv.off_day}}</p>
-                            </div>
-                            <div class="col-lg-6 px-5">
-                                <p>{{adv.aaddress}}</p>
-                            </div>
-                            <div class="col-lg-12 px-5">
-                                <a href="../useradv_chat/{{adv.pk}}" class="btn text-bg-success w-100">Message</a>
-                            </div>
-                            <!-- <div class="col-lg-6 px-5">
-                                {% if adv.p_status %}
-                                <a href="../advprof_Deactivate" class="btn btn-danger w-100" onclick="return confirm('Are you sure you want to deactivate your profile !!')">Deactivate</a>
-                                {% else %}
-                                <a href="../advprof_Activate" class="btn btn-success w-100" onclick="return confirm('Are you sure you want to activate your profile !!')">Activate</a>
-                                {% endif %}
-                            </div> -->
-                        </div>
+                        </form>
                     </div>
             </div>    
           </div>

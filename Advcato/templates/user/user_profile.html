@@ -56,32 +56,32 @@
                     <div class="pro_container col-lg-6 h-75">
                         <div class="row">
                             <div class="profile_image col-lg-12 d-flex justify-content-center align-items-center">
-                                <img src="{% static 'images/adv-logo.png' %}" class="rounded-circle img-fluid" style="height: 120px; width: 120px;" alt="">
-                                <p>{{adv.aname}}</p>
-                                <span style="color: rgb(124, 123, 123); margin-top: -20px; letter-spacing: 5px;">{{adv.bcr_no}}</span>
+                                <img src="{% static 'images/user-logo.jpg' %}" class="rounded-circle img-fluid" style="height: 120px; width: 120px;" alt="">
+                                <p>{{user.uname}}</p>
+                                <!-- <span style="color: rgb(124, 123, 123); margin-top: -20px; letter-spacing: 5px;">{{adv.bcr_no}}</span> -->
                             </div>
-                            <div class="col-lg-6 px-5">
-                                <p><span style="color: rgb(86, 83, 83);">Email: </span>{{adv.aemail}}</p>
+                            <!-- <div class="col-lg-6 px-5">
+                                <p><span style="color: rgb(86, 83, 83);">Name: </span>{{user.uname}}</p>
+                            </div> -->
+                            <div class="location a col-lg-4 px-5 ">
+                                <p><span style="color: rgb(86, 83, 83);">Phno: </span>{{user.uphone}}</p>
                             </div>
-                            <div class="location a col-lg-6 px-5 ">
-                                <p><span style="color: rgb(86, 83, 83);">Phno: </span>{{adv.aphone}}</p>
+                            <div class="col-lg-4 px-5">
+                                <p><span style="color: rgb(86, 83, 83);">Email: </span>{{user.uemail}}</p>
                             </div>
-                            <div class="col-lg-6 px-5">
-                                <p><span style="color: rgb(86, 83, 83);">Heighst Qual: </span>{{adv.aheighest_qual}}</p>
-                            </div>
-                            <div class="location a col-lg-6 px-5">
+                            <div class="location a col-lg-4 px-5">
                                 <p><i class="fa-solid fa-location-dot"></i>
-                                    &nbsp;{{adv.amjtown}}</p>
+                                    &nbsp;{{user.uaddress}}</p>
                             </div>
-                            <div class="col-lg-6 px-5">
+                            <!-- <div class="col-lg-6 px-5">
                                 <p><i class="fa-regular fa-clock"></i> {{adv.start_time}} - {{adv.end_time}}</p>
                                 <p><span style="color: rgb(86, 83, 83);">Offday: </span>{{adv.off_day}}</p>
                             </div>
                             <div class="col-lg-6 px-5">
-                                <p>{{adv.aaddress}}</p>
-                            </div>
+                                <p>{{user.uaddress}}</p>
+                            </div> -->
                             <div class="col-lg-12 px-5">
-                                <a href="../useradv_chat/{{adv.pk}}" class="btn text-bg-success w-100">Message</a>
+                                <a href="../update_userprofile" class="btn text-bg-success w-100">Update</a>
                             </div>
                             <!-- <div class="col-lg-6 px-5">
                                 {% if adv.p_status %}

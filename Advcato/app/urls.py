@@ -26,6 +26,9 @@ urlpatterns = [
     path('advuser_profile/<pk>',views.advuser_profile),
     path('user_msg',views.user_msg),
     path('useradv_chat/<pk>',views.useradv_chat,name='useradv_chat'),
+    path('user_caseview',views.user_caseview),
+    path('user_profile',views.user_profile),
+    path('update_userprofile',views.update_userprofile),
     # path('user_sendmsg/<pk>',views.user_sendmsg),
 
 
@@ -49,5 +52,9 @@ urlpatterns = [
     path('user_and_caseview/<pk>',views.user_and_caseview),
     path('adv_addcase',views.adv_addcase),
     path('update_case/<pk>',views.update_case),
+    path('endcase/<pk>',views.endcase),
+    path('reopencase/<pk>',views.reopencase),
+    path('case_view',views.case_view),
+    
 
 ]

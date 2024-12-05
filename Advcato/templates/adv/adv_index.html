@@ -24,13 +24,13 @@
               <div class="collapse navbar-collapse  " id="mynavbar">
                 <ul class="navbar-nav ms-auto">
                   <li class="nav-item">
-                    <a class="nav-link text-light" href="Adv_index">Home</a>
+                    <a class="nav-link text-light" href="../Adv_index">Home</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link text-light" href="adv_clients">Clients</a>
+                    <a class="nav-link text-light" href="../adv_clients">Clients</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link text-light" href="">Cases</a>
+                    <a class="nav-link text-light" href="../case_view">Cases</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link text-light" href="adv_msg"><i class="fa-regular fa-message"></i></a>
@@ -56,7 +56,17 @@
                         <i class="fa-regular fa-clock"></i>
                         <p>Pending Cases</p>
                     </div>
+                    {% for i in cases %}
+                    {% if i.completed is False %}
                     <div class="para">
+                      <div class="work">
+                        <span style="font-size: 18px;">{{i.case_subject}}</span><br>
+                        Next Hearing : {{i.next_hearing}}
+                      </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                    <!-- <div class="para">
                       <div class="work">
                         <span style="font-size: 18px;">Pavithran case</span><br>
                         Next Hearing : 05/09/2024
@@ -67,13 +77,7 @@
                         <span style="font-size: 18px;">Pavithran case</span><br>
                         Next Hearing : 05/09/2024
                       </div>
-                    </div>
-                    <div class="para">
-                      <div class="work">
-                        <span style="font-size: 18px;">Pavithran case</span><br>
-                        Next Hearing : 05/09/2024
-                      </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <!-- <div class="col-lg-5">

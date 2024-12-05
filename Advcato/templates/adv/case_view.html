@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADVCATO</title>
+    <link rel="stylesheet" href="{% static 'css/index_copy.css' %}">
+    <link rel="stylesheet" href="{% static 'css/user_index.css' %}">
+    <link rel="icon" href="{% static 'logot-img.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/7da30b5c41.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+      .span{
+        color: rgb(159, 159, 159);
+        font-weight: 700  ;
+      }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <nav class="navbar navbar-expand-sm ">
+            <div class="container-fluid">   
+              <a class="navbar-brand" href="User_index"><img src="{% static 'images/logo1.png' %}" alt=""><img src="{% static 'images/logo-t-negate.png' %}" style="height: 40px;" alt=""></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse  " id="mynavbar">
+                <ul class="navbar-nav ms-auto">
+                  <!-- <li class="nav-item">
+                    <a class="nav-link text-light font-weight-bold " href="javascript:void(0)">Home</a>
+                  </li> -->
+                  <li class="nav-item">
+                    <a class="nav-link text-light" href="../User_index">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link text-light" href="">Clients</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link text-light" href="">Cases</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link text-light" href="../adv_msg"><i class="fa-regular fa-message"></i>
+                        <!-- <div class="notification">
+
+                        </div> -->
+                    </a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"><i class="fa-regular fa-user text-light"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-end bg-dark" style="overflow: hidden;">
+                      <li><a class="dropdown-item bg-dark text-light"  href="#">Profile</a></li>
+                      <li><a class="dropdown-item bg-dark text-light" href="Adv_logout">Logout <i class="fa-solid fa-right-from-bracket"></i> </a></li>
+                      <!-- <li><a class="dropdown-item bg-dark text-light" href="#">A third link</a></li> -->
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              
+            </div>
+          </nav>
+          <div class="starting-page row" style="margin: 0px; background-image:linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.7)), url(https://verdicto.co/wp-content/uploads/2024/01/v2-6g780-6u6zq.webp); background-repeat: repeat-y; background-size: cover;">
+            <div class="col-lg-12 login-inp mt-1" style="height: 50px; display: flex; justify-content: center;">
+                <input type="text" name="" id="" style="width: 70%; border-radius: 25px; border: 1px solid rgb(20, 19, 19); background-color: rgb(20, 19, 19);" placeholder="Search in chats" class="inp-login px-3">
+                <i class="fa-solid fa-magnifying-glass text-light" style="position: relative; top: 15px; right: 40px; opacity: 0.3;"></i>
+            </div>
+            <div class="col-lg-12 pending-work">
+                <div class="container total case_adv">
+                    <a href="">
+                      
+                      <!-- <div class="para adv client mt-3"> -->
+
+                      
+                    
+                    </a>
+                    {% for i in cases %}
+                    <div class="cases d-flex justify-content-center mt-3">
+                      <div class="para adv case case1 w-85 p-4">
+                        <div class="details">
+                            <div class="row g-3">
+                              <div class="col-lg-12 d-flex justify-content-center " style="font-size: 18px; font-weight: 700;">
+                                Case no : {{i.case.casenumber}}
+                              </div>
+                              <div class="col-lg-3">
+                                <div class="row g-3">
+                                    <div class="col-lg-12 d-flex justify-content-center" style="text-decoration: underline; font-size: 18px;">Client Details </div>
+                                    <div class="col-lg-12"><span class="span">Name :</span> {{i.uname.uname}}</div>
+                                    <div class="col-lg-12"><span class="span">Address :</span> {{i.uname.uaddress}}</div>
+                                    <div class="col-lg-12"><span class="span">Phone :</span> {{i.uname.uphone}}</div>
+                                    <div class="col-lg-12"><span class="span">Email :</span> {{i.uname.uemail}}</div>
+                                  </div>
+                              </div>
+                              <div class="col-lg-6" style="border-left: 1px solid white; padding-left: 20px;">
+                                <div class="row">
+                                  <div class="col-lg-12 d-flex justify-content-center" style="text-decoration: underline; font-size: 18px;">Case Details </div>
+                                  <div class="col-lg-6 p-2">
+                                    <span class="span">Court :</span> {{i.case.court}}
+                                  </div>
+                                  <div class="col-lg-6 p-2">
+                                    <span class="span">Judge :</span> {{i.case.judge}}
+                                  </div>
+                                  <div class="col-lg-12 p-2">
+                                    <span class="span">Case Subject :</span> {{i.case.case_subject}}
+                                  </div>
+                                  <div class="col-lg-6 p-2 d-flex justify-content-center">
+                                    <span class="span">Reg_date :</span> {{i.case.reg_date}}
+                                  </div>
+                                  <div class="col-lg-6 p-2 d-flex justify-content-center"><span class="span">Next Hearing :</span> {{i.case.next_hearing}}</div>
+                                  <div class="col-lg-12 p-2">
+                                    <span class="span">Case Summery :</span> {{i.case.case_summery}}
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-lg-3" style="border-left: 1px solid white; padding-left: 20px;">
+                                <div class="row g-3">
+                                  <div class="col-lg-12 d-flex justify-content-center" style="text-decoration: underline; font-size: 18px;">Defender Details </div>
+                                  <div class="col-lg-12"><span class="span">Name :</span> {{i.dname}}</div>
+                                  <div class="col-lg-12"><span class="span">Address :</span> {{i.daddress}}</div>
+                                  <div class="col-lg-12"><span class="span">Phone :</span> {{i.dphno}}</div>
+                                  <div class="col-lg-12"><span class="span">Email :</span> {{i.demail}}</div>
+                                </div>
+                              </div>
+                          
+                        </div>
+                      
+                        <!-- <div class="col-lg-12 d-flex justify-content-end">
+                          {% if i.case.completed is False %}
+                          <a href="../update_case/{{i.pk}}" class="btn btn-success mx-1">Update Case</a>
+                          <a href="../endcase/{{i.pk}}" class="btn btn-danger" onclick="return confirm('Are you sure want to end this case ?')">End Case</a>
+                          {% else %}
+                          <a href="../reopencase/{{i.pk}}" class="btn btn-primary mx-1" onclick="return confirm('Are you sure want to reopen the case ?')">Reopen</a>
+                          <a href="../endcase/{{i.pk}}" class="btn btn-success disabled">Finished</a>
+                          {% endif %}
+                          
+                        </div> -->
+                          
+                      </div>
+
+                      
+                    </div>
+                    </div>
+                    {% endfor %}
+                    <!-- <div class="para adv case">
+                      <a href="../adv_addcase">
+                    <div class="row g-5">
+                      <div class="col-lg-12 d-flex justify-content-center plus_area align-items-center">
+                        <i class="fa-regular fa-plus plus_icon"></i>
+                      </div>
+                        
+                    </div>
+
+                      </a>
+                  </div> -->
+                  
+                </div>
+            </div>
+          </div>
+    </div>
+</body>
+</html>
