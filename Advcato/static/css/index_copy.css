@@ -88,10 +88,20 @@ ul li:hover{
 .login-main #u_reg{
     display: none;
 }
+.login-main .adv_reg{
+    display: flex;
+
+}
 .login-main #adv_reg{
     display: none;
 }
 
+.login-main #u_fpsw{
+    display: none;
+}
+.login-main #a_fpsw{
+    display: none;
+}
 .phead{
     display: flex;
     /* background-color: red; */
