@@ -7,7 +7,8 @@ from django.urls import reverse
 from itertools import zip_longest
 from django.http import JsonResponse
 import datetime
-
+from django.conf import settings
+from django.core.mail import send_mail
 # Create your views here.
 
 def getuser(request):
@@ -174,6 +175,39 @@ def update_userprofile(request):
             User.objects.filter(uname=request.session['user']).update(uemail=email,uphone=phno,uaddress=address)
             return redirect(user_profile)
         return render(request,'user/update_userprofile.html',{'user':user})
+
+
+def user_fgtmail(request):
+        if request.method=='POST':
+            email=request.POST['email']
+            users=User.objects.all()
+            for i in users:
+                if i.uemail==email:
+                    subject='Forgot Password'
+                    path='http://127.0.0.1:8000/user_newpassword'
+                    message = f"Click the Link below to change the password\n\n{path}\n\nPls login again using web to continue"
+                    email_from = settings.EMAIL_HOST_USER
+                    recipient_list= [email,]
+                    try:
+                        send_mail(subject,message,email_from,recipient_list)
+                        request.session['uemail']=i.uemail
+                        messages.success(request,"Email sent ! Check your inbox")
+                    except:
+                        messages.warning(request,"Error Pls try again with another Email")
+        return redirect(login)
+
+def user_newpassword(request):
+    if request.method=='POST':
+        psw=request.POST['psw']
+        cnfpsw=request.POST['cnfpsw']
+        if psw==cnfpsw:
+            user=User.objects.get(uemail=request.session['uemail'])
+            
+    return render(request,'user/user_newpassword.html')
+
+
+
+
 
 
 #Advocates

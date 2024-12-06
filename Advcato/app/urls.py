@@ -29,6 +29,8 @@ urlpatterns = [
     path('user_caseview',views.user_caseview),
     path('user_profile',views.user_profile),
     path('update_userprofile',views.update_userprofile),
+    path('user_fgtmail',views.user_fgtmail),
+    path('user_newpassword',views.user_newpassword),
     # path('user_sendmsg/<pk>',views.user_sendmsg),
 
 
