@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from .models import *
 import bcrypt
 from django.contrib import messages
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse
 from django.urls import reverse
 from itertools import zip_longest
 from django.http import JsonResponse
@@ -175,7 +175,7 @@ def update_userprofile(request):
             User.objects.filter(uname=request.session['user']).update(uemail=email,uphone=phno,uaddress=address)
             return redirect(user_profile)
         return render(request,'user/update_userprofile.html',{'user':user})
-
+    
 
 def user_fgtmail(request):
         if request.method=='POST':
@@ -193,7 +193,9 @@ def user_fgtmail(request):
                         request.session['uemail']=i.uemail
                         messages.success(request,"Email sent ! Check your inbox")
                     except:
-                        messages.warning(request,"Error Pls try again with another Email")
+                        messages.warning(request,"Error Pls try again with another Email !!")
+                else:
+                        messages.warning(request,"This Email is not registered with any account!!")
         return redirect(login)
 
 def user_newpassword(request):
@@ -201,8 +203,18 @@ def user_newpassword(request):
         psw=request.POST['psw']
         cnfpsw=request.POST['cnfpsw']
         if psw==cnfpsw:
-            user=User.objects.get(uemail=request.session['uemail'])
-            
+            try:
+                user=User.objects.get(uemail=request.session['uemail'])
+                psw=psw.encode('utf-8')
+                salt=bcrypt.gensalt()               #Password Hashing
+                psw_hashed=bcrypt.hashpw(psw,salt)
+                User.objects.filter(pk=user.pk).update(upassword=psw_hashed.decode('utf-8'))
+                messages.success(request,"Password changed !!")
+                del request.session['uemail']
+            except:
+                return HttpResponse('This page is no longer Available')
+        else:
+            messages.warning(request,"Password doesn't match !!")
     return render(request,'user/user_newpassword.html')
 
 
@@ -536,3 +548,44 @@ def case_view(request):
             if i.case.aname==adv:
                 cases.append(i)
         return render(request,'adv/case_view.html',{'cases':cases})
+    
+def adv_fgtmail(request):
+    if request.method=='POST':
+        email=request.POST['email']
+        try:
+            adv=Advocate.objects.get(aemail=email)
+            subject='Forgot Password'
+            path='http://127.0.0.1:8000/adv_newpassword'
+            message = f"Click the Link below to change the password\n\n{path}\n\nPls login again using web to continue"
+            email_from = settings.EMAIL_HOST_USER
+            recipient_list= [email,]
+            try:
+                send_mail(subject,message,email_from,recipient_list)
+                request.session['aemail']=adv.aemail
+                messages.success(request,"Email sent ! Check your inbox")
+            except:
+                messages.warning(request,"Error Pls try again with another Email !!")
+        except:
+            messages.warning(request,"This Email is not assosiated with any account !!")
+            
+    return redirect(login)
+
+
+def adv_newpassword(request):
+        if request.method=='POST':
+            psw=request.POST['psw']
+            cnfpsw=request.POST['cnfpsw']
+            if psw==cnfpsw:
+                try:
+                    adv=Advocate.objects.get(aemail=request.session['aemail'])
+                    psw=psw.encode('utf-8')
+                    salt=bcrypt.gensalt()               #Password Hashing
+                    psw_hashed=bcrypt.hashpw(psw,salt)
+                    Advocate.objects.filter(pk=adv.pk).update(apassword=psw_hashed.decode('utf-8'))
+                    messages.success(request,"Password changed !!")
+                    del request.session['aemail']
+                except:
+                    return HttpResponse('This page is no longer Available')
+            else:
+                messages.warning(request,"Password doesn't match!!")
+        return render(request,'adv/adv_newpassword.html')

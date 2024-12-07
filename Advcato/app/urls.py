@@ -57,6 +57,8 @@ urlpatterns = [
     path('endcase/<pk>',views.endcase),
     path('reopencase/<pk>',views.reopencase),
     path('case_view',views.case_view),
+    path('adv_fgtmail',views.adv_fgtmail),
+    path('adv_newpassword',views.adv_newpassword),
     
 
 ]

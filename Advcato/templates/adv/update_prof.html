@@ -15,34 +15,37 @@
 </head>
 <body>
     <div class="main">
-        <nav class="navbar navbar-expand-sm ">
-            <div class="container-fluid">   
-              <a class="navbar-brand" href="../"><img src="{% static 'images/logo1.png' %}" alt=""><img src="{% static 'images/logo-t-negate.png' %}" style="height: 40px;" alt=""></a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <!-- <div class="collapse navbar-collapse  " id="mynavbar">
-                <ul class="navbar-nav ms-auto">
-                  <li class="nav-item">
-                    <a class="nav-link text-light" href="about">Home</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link text-light" href="contact">Advocates</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link text-light" href="contact"><i class="fa-regular fa-message"></i></a>
-                  </li> 
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"><i class="fa-regular fa-user text-light"></i></a>
-                    <ul class="dropdown-menu dropdown-menu-end bg-dark" style="overflow: hidden;">
-                      <li><a class="dropdown-item bg-dark text-light"  href="#">Profile</a></li>
-                      <li><a class="dropdown-item bg-dark text-light" href="User_logout">Logout <i class="fa-solid fa-right-from-bracket"></i> </a></li>
-                    </ul>
-                  </li>
+      <nav class="navbar navbar-expand-sm ">
+        <div class="container-fluid">   
+          <a class="navbar-brand" href="../"><img src="{% static 'images/logo1.png' %}" alt=""><img src="{% static 'images/logo-t-negate.png' %}" style="height: 40px;" alt=""></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse  " id="mynavbar">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link text-light" href="../Adv_index">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-light" href="../adv_clients">Clients</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-light" href="../case_view">Cases</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-light" href="adv_msg"><i class="fa-regular fa-message"></i></a>
+              </li> 
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"><i class="fa-regular fa-user text-light"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end bg-dark" style="overflow: hidden;">
+                  <li><a class="dropdown-item bg-dark text-light"  href="Adv_profile">Profile</a></li>
+                  <li><a class="dropdown-item bg-dark text-light" href="Adv_logout">Logout <i class="fa-solid fa-right-from-bracket"></i> </a></li>
                 </ul>
-              </div> -->
-            </div>
-          </nav>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
           <div class="starting-page row editing_home" style="margin: 0;">
             <div class="messege1 d-flex justify-content-center" style="position: absolute; top: 10px;">
               {% if messages%}
