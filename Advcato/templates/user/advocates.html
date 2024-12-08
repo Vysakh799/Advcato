@@ -52,10 +52,26 @@
         </div>
       </nav>
           <div class="starting-page row" style="margin: 0px; background-image:linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.7)), url(https://verdicto.co/wp-content/uploads/2024/01/v2-6g780-6u6zq.webp); background-repeat: no-repeat; background-size: cover;">
-            <div class="col-lg-12 login-inp mt-1" style="height: 50px; display: flex; justify-content: center;">
-                <input type="text" name="" id="" style="width: 70%; border-radius: 25px; border: 1px solid rgb(20, 19, 19); background-color: rgb(20, 19, 19);" placeholder="Search Advocates name or Location" class="inp-login px-3">
-                <i class="fa-solid fa-magnifying-glass text-light" style="position: relative; top: 15px; right: 40px; opacity: 0.3;"></i>
-            </div>
+            <div class="messege1 d-flex justify-content-center" style="position: absolute; top: 10px;">
+              {% if messages%}
+              {% for message in messages%}    
+              <div class="alert alert-{{message.tags}} alert-dismissible fade show art-bx w-50" role="alert">
+                <strong>{{ message }}</strong> 
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                  <!-- <span aria-hidden="true">&times</span> -->
+                </button>
+              </div>
+              {%endfor%}
+              {%endif%}
+              </div>
+          <div class="col-lg-12 login-inp mt-1" style="height: 50px; display: flex; justify-content: center;">
+              <form action="../adv_search" class="w-100 d-flex justify-content-center" method="POST">
+                  {% csrf_token %}
+                  <input type="text" name="search" id="" style="width: 70%; border-radius: 25px; border: 1px solid rgb(20, 19, 19); background-color: rgb(20, 19, 19);" placeholder="Search Advocates name or Location" class="inp-login px-3">
+                  <i class="fa-solid fa-magnifying-glass text-light" style="position: relative; top: 15px; right: 40px; opacity: 0.3;"></i>
+                  <input type="submit" value="" style="background-color: transparent; border: none;">
+              </form>
+          </div>  
             <<div class="col-lg-12 pending-work" style="margin-top: -200px;">
                 <div class="container total">
                     {% for adv in Advocates %}

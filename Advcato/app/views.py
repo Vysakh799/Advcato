@@ -217,6 +217,26 @@ def user_newpassword(request):
             messages.warning(request,"Password doesn't match !!")
     return render(request,'user/user_newpassword.html')
 
+def adv_search(request):
+    if getuser(request):
+        result=""
+        if request.method=='POST':
+            searchout=request.POST['search']
+            fplace=Advocate.objects.filter(amjtown=searchout,p_status=True)
+            if fplace:
+                result=fplace
+                print(result)
+            else:   
+                try:
+                    fname=Advocate.objects.get(aname=searchout,p_status=True)
+                    result=[]
+                    result.append(fname)
+                except:
+                    messages.warning(request,"Advocates not found !!")
+
+
+    return render(request,'user/adv_search.html',{'result':result})
+
 
 
 
